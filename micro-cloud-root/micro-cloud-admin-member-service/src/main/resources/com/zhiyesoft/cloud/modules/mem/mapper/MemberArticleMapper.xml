@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiyesoft.cloud.modules.mem.mapper.MemberArticleMapper">
+  <resultMap id="BaseResultMap" type="com.zhiyesoft.cloud.modules.mem.domain.MemberArticle">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="MEMBER_ID" jdbcType="VARCHAR" property="memberId" />
+    <result column="ARTICLE_ID" jdbcType="VARCHAR" property="articleId" />
+  </resultMap>
+  
+</mapper>

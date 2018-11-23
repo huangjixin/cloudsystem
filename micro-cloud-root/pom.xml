@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.zhiyesoft.cloud</groupId>
+	<artifactId>micro-cloud-root</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>micro-cloud-root</name>
+	<description>智野根项目</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.5.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<spring-cloud.version>Finchley.SR1</spring-cloud.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				
+			</plugin>
+		</plugins>
+	</build>
+	<modules>
+		<module>micro-cloud-admin-upload</module>
+		<module>micro-cloud-core</module>
+		<module>micro-cloud-admin-server</module>
+		<module>micro-cloud-admin-config</module>
+		<module>micro-cloud-admin-zuul</module>
+		<module>micro-cloud-admin-security</module>
+		<module>micro-cloud-admin-system-api</module>
+		<module>micro-cloud-admin-system</module>
+		<module>micro-cloud-admin-system-service</module>
+		<module>micro-cloud-admin-system-vo</module>
+		<module>micro-cloud-admin-member</module>
+		<module>micro-cloud-admin-member-api</module>
+		<module>micro-cloud-admin-member-service</module>
+		<module>micro-cloud-admin-member-vo</module>
+		<module>micro-cloud-admin-goods-api</module>
+		<module>micro-cloud-admin-goods</module>
+		<module>micro-cloud-admin-goods-service</module>
+		<module>micro-cloud-admin-goods-vo</module>
+	</modules>
+
+</project>
