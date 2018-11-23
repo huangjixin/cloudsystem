@@ -1,0 +1,1 @@
+1.使用命令行構建的時候，用clean install -Dskip.test=true跳過測試。

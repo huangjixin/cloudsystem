@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="Mysql"><!-- targetRuntime="MyBatis3Simple" defaultModelType="flat" -->
+		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+			<property name="mappers"
+				value="tk.mybatis.mapper.common.Mapper" />
+			<property name="caseSensitive" value="true" />
+		</plugin>
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+		<plugin
+			type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>
+		<!-- 想要mybaits代码生成器生成Example类换个名字，是通过插件实现的，即下面的这个插件配置参数很关键。 -->
+		<plugin
+			type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+			<property name="searchString" value="Example$" />
+			<property name="replaceString" value="Criteria" />
+		</plugin>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/cloudsystem"
+			userId="root" password="root">
+		</jdbcConnection>
+
+		<javaModelGenerator
+			targetPackage="com.zhiyesoft.cloud.modules.system.domain"
+			targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator
+			targetPackage="com.zhiyesoft.cloud.modules.system.mapper"
+			targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator
+			targetPackage="com.zhiyesoft.cloud.modules.system.mapper"
+			targetProject="src\main\java" type="XMLMAPPER">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table tableName="system_user" domainObjectName="User">
+		</table>
+		<table tableName="system_user_role" domainObjectName="UserRole">
+		</table>
+		<table tableName="system_role" domainObjectName="Role">
+		</table>
+		<table tableName="system_role_resource" domainObjectName="RoleResource">
+		</table>
+		<table tableName="system_resource" domainObjectName="Resource">
+		</table>
+		<table tableName="system_attament" domainObjectName="Attament">
+		</table>
+	</context>
+</generatorConfiguration>
