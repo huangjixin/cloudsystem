@@ -47,7 +47,7 @@
 				<configuration>
 					<imageName>${project.artifactId}</imageName>
 					<imageTags>0.0.1</imageTags>
-					<dockerDirectory>src/main/docker</dockerDirectory>
+					<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>
