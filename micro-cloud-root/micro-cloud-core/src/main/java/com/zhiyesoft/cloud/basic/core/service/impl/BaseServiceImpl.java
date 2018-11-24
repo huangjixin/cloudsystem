@@ -141,7 +141,14 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
 	@Transactional(readOnly=true)
 	@Override
 	public T selectByPrimaryKey(Object key) {
+		if(getLogger().isDebugEnabled()) {
+			getLogger().debug(getBaseMessage()+"查询对象开始，传入的参数是："+key.toString());
+		}
 		T record = getBaseMapper().selectByPrimaryKey(key);
+		if(getLogger().isDebugEnabled()) {
+			getLogger().debug(getBaseMessage()+"查询对象结束，结果是："+(record==null?"没有数据":record.toString()));
+		}
+		
 		return record;
 	}
 

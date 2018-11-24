@@ -19,7 +19,7 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!--日志文件输出的文件名 -->
-			<FileNamePattern>${LOG_HOME}/bhmall-admin-shop-%d{yyyy-MM-dd}.log
+			<FileNamePattern>${LOG_HOME}/admin-system-%d{yyyy-MM-dd}.log
 			</FileNamePattern>
 			<!--日志文件保留天数 -->
 			<MaxHistory>30</MaxHistory>
@@ -41,14 +41,14 @@
 	</appender>
 
 	<!-- 日志输出级别 -->
-	<root level="INFO">
+	<!-- <root level="INFO">
 		<appender-ref ref="FILE" />
-		<!-- 生产环境将请stdout,testfile去掉 -->
-		<appender-ref ref="STDOUT" />
-	</root>
-	<!-- <root level="DEBUG">
+		生产环境将请stdout,testfile去掉
 		<appender-ref ref="STDOUT" />
 	</root> -->
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+	</root>
 
 	<logger name="com.zhiyesoft.cloud.modules.system.mapper" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
