@@ -1,0 +1,34 @@
+version: "2"
+services:
+  micro-cloud-admin-server:
+    image: micro-cloud-admin-server:0.0.1
+    restart: always
+    container_name: micro-cloud-admin-server
+    ports:
+     - 8761:8761
+    environment:
+     - PROFILE=dev
+
+  micro-cloud-admin-config:
+    image: micro-cloud-admin-config:0.0.1
+    restart: always
+    container_name: micro-cloud-admin-config
+    ports:
+     - 8762:8762
+    links:
+     - micro-cloud-admin-server
+    environment:
+     - PROFILE=dev
+     - HOST=micro-cloud-admin-server
+
+  micro-cloud-admin-zuul:
+    image: micro-cloud-admin-zuul:0.0.1
+    restart: always
+    container_name: micro-cloud-admin-zuul
+    ports:
+     - 8760:8760
+    links:
+     - micro-cloud-admin-server
+    environment:
+     - PROFILE=dev
+     - HOST=micro-cloud-admin-server
