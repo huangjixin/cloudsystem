@@ -1,5 +1,5 @@
 FROM frolvlad/alpine-oraclejdk8:slim
-VOLUME D:\workspace\github\cloudsystem\micro-cloud-root\share
+VOLUME /tmp
 ADD *.jar app.jar
 #RUN sh -c 'touch /app.jar'
 ENV JAVA_OPTS="-Xms256m -Xmx512m"
