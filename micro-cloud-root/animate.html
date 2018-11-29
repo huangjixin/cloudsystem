@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>飞机螺旋气流</title>
+    <style>
+        body{
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="Canvas"></canvas>
+    <!-- 实现原理 http://jsfiddle.net/umaar/fWSUk/ -->
+    <script>
+        (function () {
+
+            var unit= 50,canvas, context, canvas2, context2,
+                height, width, xAxis, yAxis,
+                draw;
+            /**
+             * 初始化函数、变量，开始动画。
+             */
+            function init() {
+                canvas = document.getElementById("Canvas");
+                context = canvas.getContext("2d");
+                height = canvas.height = window.innerHeight;
+                width = canvas.width = window.innerWidth;
+                context.save();
+                
+                var array = [];
+                let object = {};
+                object.x=10;
+                object.y=10;
+                array.push(object);
+                object = {};
+                object.x=10;
+                object.y=100;
+                array.push(object);
+                object = {};
+                object.x=300;
+                object.y=100;
+                array.push(object);
+                object = {};
+                object.x=300;
+                object.y=400;
+                array.push(object);
+                object = {};
+                object.x=600;
+                object.y=400;
+                array.push(object);
+                var item = array[0];
+                //array.push({x:0,y:0});
+               // array.push({x:100,y:0});
+               // array.push({x:100,y:500});
+               // array.push({x:20,y:550});
+               context.beginPath();
+               drawAnimationLine(item.x,item.y,array,0);
+            }
+
+
+            // 画线动画函数。tempX,tempY 绘制到当前临时变量；
+            function drawAnimationLine(tempX,tempY,array,index){
+            	if((array.length<2) || (index+1==array.length)){
+            		return
+            	}
+            	
+            	// 获取到当前的条目
+            	var currentItem = array[index];
+            	// 获取到下一条条目
+            	var nextItem = array[index+1];
+            	
+            	var startX = currentItem.x;
+            	var startY = currentItem.y;
+            	var endX = nextItem.x;
+            	var endY = nextItem.y;
+            	
+            	var distanceX = endX - startX;
+            	var distanceY = endY - startY;
+            	
+            	var incX = 0;
+            	var incY = 0;
+            	
+            	
+            	if(distanceX>0){
+            		incX=1
+            	}else if(distanceX<0){
+            		incX=-1
+            	}else{
+            		incX= 0
+            	}
+            	if(distanceY>0){
+            		incY=1
+            	}else if(distanceY<0){
+            		incY=-1
+            	}else{
+            		incY=0
+            	}
+            	
+            	if(tempX!=endX){
+            		tempX += incX;
+            	}
+            	if(tempY!=endY){
+            		tempY += incY;
+            	}
+            	
+            	
+            	console.log('startX：'+startX+'，startY'+startY+'，tempX'+tempX+'，tempY'+tempY+'，endX'+endX+'，endY'+endY);
+            	
+            	if(tempX == endX && tempY == endY ){
+            		if(index+1 < array.length){
+            			index++;
+            			setTimeout(drawAnimationLine, 1,endX,endY,array,index);
+            		}else{
+            			
+            		}
+            		
+            	}else{
+            		context.moveTo(startX,startY);
+                	context.lineTo(tempX,tempY);
+                	context.lineWidth = 5;
+                    context.strokeStyle = "#AA394C";
+                    context.stroke();
+                	setTimeout(drawAnimationLine, 1,tempX,tempY,array,index);
+            	}
+            	
+            }
+            
+            init();
+
+            //监听浏览器可视窗口改变时执行
+            window.addEventListener('resize', function() {
+                height = canvas.height = window.innerHeight;
+                width = canvas.width = window.innerWidth;
+                init();
+            }, false);
+        })();
+    </script>
+</body>
+</html>
