@@ -6,7 +6,7 @@ services:
     container_name: micro-cloud-admin-system
     ports:
      - 8765:8765
-    links:
+    external_links:
      - micro-cloud-admin-server
     environment:
      - PROFILE=dev
