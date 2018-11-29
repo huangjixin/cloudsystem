@@ -20,18 +20,6 @@ services:
     environment:
      - PROFILE=dev
      - HOST=micro-cloud-admin-server
-  
-  micro-cloud-admin-system:
-    image: micro-cloud-admin-system:0.0.1
-    restart: always
-    container_name: micro-cloud-admin-system
-    ports:
-     - 8765:8765
-    links:
-     - micro-cloud-admin-server
-    environment:
-     - PROFILE=dev
-     - HOST=micro-cloud-admin-server
 
   micro-cloud-admin-zuul:
     image: micro-cloud-admin-zuul:0.0.1
