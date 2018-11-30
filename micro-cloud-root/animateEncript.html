@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>飞机螺旋气流</title>
+    <style>
+        body{
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="Canvas"></canvas>
+    <!-- 实现原理 http://jsfiddle.net/umaar/fWSUk/ -->
+    <script>
+    var _0xbc0f=["\x43\x61\x6E\x76\x61\x73","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x32\x64","\x67\x65\x74\x43\x6F\x6E\x74\x65\x78\x74","\x68\x65\x69\x67\x68\x74","\x69\x6E\x6E\x65\x72\x48\x65\x69\x67\x68\x74","\x77\x69\x64\x74\x68","\x69\x6E\x6E\x65\x72\x57\x69\x64\x74\x68","\x73\x61\x76\x65","\x78","\x79","\x70\x75\x73\x68","\x62\x65\x67\x69\x6E\x50\x61\x74\x68","\x6C\x65\x6E\x67\x74\x68","\x73\x74\x61\x72\x74\x58\uFF1A","\uFF0C\x73\x74\x61\x72\x74\x59","\uFF0C\x74\x65\x6D\x70\x58","\uFF0C\x74\x65\x6D\x70\x59","\uFF0C\x65\x6E\x64\x58","\uFF0C\x65\x6E\x64\x59","\x6C\x6F\x67","\x6D\x6F\x76\x65\x54\x6F","\x6C\x69\x6E\x65\x54\x6F","\x6C\x69\x6E\x65\x57\x69\x64\x74\x68","\x73\x74\x72\x6F\x6B\x65\x53\x74\x79\x6C\x65","\x23\x41\x41\x33\x39\x34\x43","\x73\x74\x72\x6F\x6B\x65","\x72\x65\x73\x69\x7A\x65","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72"];(function(){var _0x7e4ax1=50,_0x7e4ax2,_0x7e4ax3,_0x7e4ax4,_0x7e4ax5,_0x7e4ax6,_0x7e4ax7,_0x7e4ax8,_0x7e4ax9,_0x7e4axa;function _0x7e4axb(){_0x7e4ax2= document[_0xbc0f[1]](_0xbc0f[0]);_0x7e4ax3= _0x7e4ax2[_0xbc0f[3]](_0xbc0f[2]);_0x7e4ax6= _0x7e4ax2[_0xbc0f[4]]= window[_0xbc0f[5]];_0x7e4ax7= _0x7e4ax2[_0xbc0f[6]]= window[_0xbc0f[7]];_0x7e4ax3[_0xbc0f[8]]();var _0x7e4axc=[];let _0x7e4axd={};_0x7e4axd[_0xbc0f[9]]= 10;_0x7e4axd[_0xbc0f[10]]= 10;_0x7e4axc[_0xbc0f[11]](_0x7e4axd);_0x7e4axd= {};_0x7e4axd[_0xbc0f[9]]= 10;_0x7e4axd[_0xbc0f[10]]= 100;_0x7e4axc[_0xbc0f[11]](_0x7e4axd);_0x7e4axd= {};_0x7e4axd[_0xbc0f[9]]= 300;_0x7e4axd[_0xbc0f[10]]= 100;_0x7e4axc[_0xbc0f[11]](_0x7e4axd);_0x7e4axd= {};_0x7e4axd[_0xbc0f[9]]= 300;_0x7e4axd[_0xbc0f[10]]= 400;_0x7e4axc[_0xbc0f[11]](_0x7e4axd);_0x7e4axd= {};_0x7e4axd[_0xbc0f[9]]= 600;_0x7e4axd[_0xbc0f[10]]= 400;_0x7e4axc[_0xbc0f[11]](_0x7e4axd);var _0x7e4axe=_0x7e4axc[0];_0x7e4ax3[_0xbc0f[12]]();_0x7e4axf(_0x7e4axe[_0xbc0f[9]],_0x7e4axe[_0xbc0f[10]],_0x7e4axc,0)}function _0x7e4axf(_0x7e4ax10,_0x7e4ax11,_0x7e4axc,_0x7e4ax12){if((_0x7e4axc[_0xbc0f[13]]< 2)|| (_0x7e4ax12+ 1== _0x7e4axc[_0xbc0f[13]])){return};var _0x7e4ax13=_0x7e4axc[_0x7e4ax12];var _0x7e4ax14=_0x7e4axc[_0x7e4ax12+ 1];var _0x7e4ax15=_0x7e4ax13[_0xbc0f[9]];var _0x7e4ax16=_0x7e4ax13[_0xbc0f[10]];var _0x7e4ax17=_0x7e4ax14[_0xbc0f[9]];var _0x7e4ax18=_0x7e4ax14[_0xbc0f[10]];var _0x7e4ax19=_0x7e4ax17- _0x7e4ax15;var _0x7e4ax1a=_0x7e4ax18- _0x7e4ax16;var _0x7e4ax1b=0;var _0x7e4ax1c=0;if(_0x7e4ax19> 0){_0x7e4ax1b= 2}else {if(_0x7e4ax19< 0){_0x7e4ax1b=  -2}else {_0x7e4ax1b= 0}};if(_0x7e4ax1a> 0){_0x7e4ax1c= 2}else {if(_0x7e4ax1a< 0){_0x7e4ax1c=  -2}else {_0x7e4ax1c= 0}};if(_0x7e4ax10!= _0x7e4ax17){_0x7e4ax10+= _0x7e4ax1b};if(_0x7e4ax11!= _0x7e4ax18){_0x7e4ax11+= _0x7e4ax1c};console[_0xbc0f[20]](_0xbc0f[14]+ _0x7e4ax15+ _0xbc0f[15]+ _0x7e4ax16+ _0xbc0f[16]+ _0x7e4ax10+ _0xbc0f[17]+ _0x7e4ax11+ _0xbc0f[18]+ _0x7e4ax17+ _0xbc0f[19]+ _0x7e4ax18);if(_0x7e4ax10== _0x7e4ax17&& _0x7e4ax11== _0x7e4ax18){if(_0x7e4ax12+ 1< _0x7e4axc[_0xbc0f[13]]){_0x7e4ax12++;setTimeout(_0x7e4axf,1,_0x7e4ax17,_0x7e4ax18,_0x7e4axc,_0x7e4ax12)}else {}}else {_0x7e4ax3[_0xbc0f[21]](_0x7e4ax15,_0x7e4ax16);_0x7e4ax3[_0xbc0f[22]](_0x7e4ax10,_0x7e4ax11);_0x7e4ax3[_0xbc0f[23]]= 1;_0x7e4ax3[_0xbc0f[24]]= _0xbc0f[25];_0x7e4ax3[_0xbc0f[26]]();setTimeout(_0x7e4axf,1,_0x7e4ax10,_0x7e4ax11,_0x7e4axc,_0x7e4ax12)}}_0x7e4axb();window[_0xbc0f[28]](_0xbc0f[27],function(){_0x7e4ax6= _0x7e4ax2[_0xbc0f[4]]= window[_0xbc0f[5]];_0x7e4ax7= _0x7e4ax2[_0xbc0f[6]]= window[_0xbc0f[7]];_0x7e4axb()},false)})()
+    </script>
+</body>
+</html>
