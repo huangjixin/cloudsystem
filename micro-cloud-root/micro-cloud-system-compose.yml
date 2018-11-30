@@ -1,11 +1,23 @@
 version: "2"
 services:
-  micro-cloud-admin-system:
+  micro-cloud-admin-system-8765:
     image: micro-cloud-admin-system:0.0.1
     restart: always
-    container_name: micro-cloud-admin-system
+    container_name: micro-cloud-admin-system-8765
     ports:
      - 8765:8765
+    external_links:
+     - micro-cloud-admin-server
+    environment:
+     - PROFILE=dev
+     - HOST=micro-cloud-admin-server
+    
+  micro-cloud-admin-system-8766:
+    image: micro-cloud-admin-system:0.0.1
+    restart: always
+    container_name: micro-cloud-admin-system-8766
+    ports:
+     - 8766:8765
     external_links:
      - micro-cloud-admin-server
     environment:
