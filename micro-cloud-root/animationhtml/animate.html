@@ -99,12 +99,25 @@
             		incY=0
             	}
             	
-            	if(tempX!=endX){
-            		tempX += incX;
-            	}
-            	if(tempY!=endY){
-            		tempY += incY;
-            	}
+            	if(distanceX!=0){
+              	  if (tempX>endX) {
+              		  tempX = endX;  
+              	  }else if(tempX == endX){
+              		  tempX += 0;
+              	  }else{
+              		  tempX += incX;
+              	  } 
+                }
+                
+                if(distanceY!=0){
+              	  if (tempY>endY) {
+              		  tempY = endY;  
+              	  }else if(tempY == endY){
+              		  tempY += 0;
+              	  }else{
+              		  tempY += incY;
+              	  } 
+                }
             	
             	
             	console.log('startX：'+startX+'，startY'+startY+'，tempX'+tempX+'，tempY'+tempY+'，endX'+endX+'，endY'+endY);
