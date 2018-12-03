@@ -1,4 +1,4 @@
-version: "3"
+version: "3" 
 services:
   micro-cloud-admin-server:
     image: micro-cloud-admin-server:0.0.1
