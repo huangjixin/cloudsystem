@@ -29,7 +29,7 @@ services:
         aliases:
           - Aconfig
     ports:
-     - 8761:8761
+     - 8762:8762
     environment:
      - PROFILE=dev
      - HOST=Aserver
@@ -46,7 +46,7 @@ services:
         aliases:
           - Azuul 
     ports:
-     - 8761:8761
+     - 8760:8760
     environment:
      - PROFILE=dev
      - HOST=Aserver
