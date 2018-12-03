@@ -1,25 +1,23 @@
-version: "2"
+version: "3"
 services:
-  micro-cloud-admin-system-8765:
+  micro-cloud-admin-system:
     image: micro-cloud-admin-system:0.0.1
-    restart: always
-    container_name: micro-cloud-admin-system-8765
+    container_name: micro-cloud-admin-system
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    networks:
+      cloudsystem-overlay:
+        aliases:
+          - Asystem
     ports:
      - 8765:8765
-    external_links:
-     - micro-cloud-admin-server
     environment:
      - PROFILE=dev
-     - HOST=micro-cloud-admin-server
-    
-  micro-cloud-admin-system-8766:
-    image: micro-cloud-admin-system:0.0.1
-    restart: always
-    container_name: micro-cloud-admin-system-8766
-    ports:
-     - 8766:8765
-    external_links:
-     - micro-cloud-admin-server
-    environment:
-     - PROFILE=dev
-     - HOST=micro-cloud-admin-server
+     - HOST=Aserver
+
+networks:
+  cloudsystem-overlay:
+    external:
+      name: cloudsystem-overlay

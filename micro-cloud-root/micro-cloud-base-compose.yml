@@ -1,34 +1,57 @@
-version: "2"
+version: "3"
 services:
   micro-cloud-admin-server:
     image: micro-cloud-admin-server:0.0.1
-    restart: always
     container_name: micro-cloud-admin-server
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    networks:
+      cloudsystem-overlay:
+        aliases:
+          - Aserver
     ports:
      - 8761:8761
     environment:
      - PROFILE=dev
-
+     - HOST=Aserver
+     
   micro-cloud-admin-config:
     image: micro-cloud-admin-config:0.0.1
-    restart: always
     container_name: micro-cloud-admin-config
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    networks:
+      cloudsystem-overlay:
+        aliases:
+          - Aconfig
     ports:
-     - 8762:8762
-    links:
-     - micro-cloud-admin-server
+     - 8761:8761
     environment:
      - PROFILE=dev
-     - HOST=micro-cloud-admin-server
-
+     - HOST=Aserver
+     
   micro-cloud-admin-zuul:
     image: micro-cloud-admin-zuul:0.0.1
-    restart: always
     container_name: micro-cloud-admin-zuul
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    networks:
+      cloudsystem-overlay:
+        aliases:
+          - Azuul 
     ports:
-     - 8760:8760
-    links:
-     - micro-cloud-admin-server
+     - 8761:8761
     environment:
      - PROFILE=dev
-     - HOST=micro-cloud-admin-server
+     - HOST=Aserver
+     
+networks:
+  cloudsystem-overlay:
+    external:
+      name: cloudsystem-overlay
