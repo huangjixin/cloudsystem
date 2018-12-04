@@ -2,7 +2,7 @@ version: "3"
 services:
   micro-cloud-admin-system:
     image: micro-cloud-admin-system:0.0.1
-    container_name: micro-cloud-admin-system
+    #container_name: micro-cloud-admin-system
     deploy:
       replicas: 2
       restart_policy:
