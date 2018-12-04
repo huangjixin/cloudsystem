@@ -1,7 +1,7 @@
 version: "3"  
 services:
   micro-cloud-admin-server:
-    image: micro-cloud-admin-server:0.0.1
+    image: registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-server-0.0.1
    # container_name: micro-cloud-admin-server
     deploy:
       replicas: 1
@@ -18,7 +18,7 @@ services:
      - HOST=Aserver
      
   micro-cloud-admin-config:
-    image: micro-cloud-admin-config:0.0.1
+    image: registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-config-0.0.1
     #container_name: micro-cloud-admin-config
     deploy:
       replicas: 1
@@ -33,9 +33,9 @@ services:
     environment:
      - PROFILE=dev
      - HOST=Aserver
-     
+    
   micro-cloud-admin-zuul:
-    image: micro-cloud-admin-zuul:0.0.1
+    image: registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-zuul-0.0.1
     #container_name: micro-cloud-admin-zuul
     deploy:
       replicas: 1

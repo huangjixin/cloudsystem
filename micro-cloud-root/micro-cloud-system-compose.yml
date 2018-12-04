@@ -1,7 +1,7 @@
 version: "3" 
 services:
   micro-cloud-admin-system:
-    image: micro-cloud-admin-system:0.0.1
+    image: registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-system-0.0.1
     #container_name: micro-cloud-admin-system
     deploy:
       replicas: 2
@@ -16,7 +16,7 @@ services:
     environment:
      - PROFILE=dev
      - HOST=Aserver
-
+ 
 networks:
   cloudsystem-overlay:
     external:
