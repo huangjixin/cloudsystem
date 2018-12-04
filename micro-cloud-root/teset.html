@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+<!-- <meta name="apple-mobile-web-app-capable" content="yes" />
+<meta http-equiv="Cache-Control" content="no-siteapp"> -->
+<meta name="apple-mobile-web-app-title" content="行政中心导航">
+<title>行政中心导航</title>
+	<style type="text/css">
+		.box{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width:100%;
+			height:100%;
+		}
+		
+		.boxItemLeft{
+			display: flex;
+			flex-direction:column;
+			width:250px;
+			align-items: flex-end;
+			justify-content: flex-end;
+		}
+		
+		.boxItemRight{
+			display: flex;
+			flex-direction:column;
+			width:250px;
+			align-items: flex-start;
+			justify-content: flex-start;
+		}
+		
+		.boxContent{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding-top:150px;
+		}
+		
+		.btn{
+			font-size:1.5rem;
+			margin: 1rem;
+		}
+		
+		.canvasStyle{
+			background-size: 800px 600px;
+			background-image: url(images/floor1.jpg);
+			border: 1px solid black;
+		}
+	</style>
+	
+</head>
+<body>
+	<div class="box">
+		<div class="boxItemLeft">
+			<div>
+				<button id="testBtn" class="btn" onclick="test()">你好</button>
+			</div>
+			<div>
+				<button class="btn">abdc</button>
+			</div>
+			<div>
+				<button class="btn">1232321321321313213</button>
+			</div>
+		</div>
+		<div class="boxContent">
+			<canvas id="canv" class="canvasStyle"></canvas>
+		</div>
+		
+		<div class="boxItemRight">
+			<div>
+				<button class="btn">ni hao213213</button>
+			</div>
+			<div>
+				<button class="btn">ni hao </button>
+			</div>
+			<div>
+				<button class="btn">ni hao </button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		// 侦听加载完事件。
+		window.addEventListener('onload',init());
+		
+		// 初始化函数
+		function init(){
+			var canvas;
+			canvas = document.getElementById('canv');
+			canvas.width=800;
+			canvas.height=600;
+			var context = canvas.getContext('2d');
+			context.beginPath();
+			context.lineWidth = 1;
+            context.strokeStyle = '#044ef5';
+            
+			context.moveTo(0,0);
+          	context.lineTo(100,100);                 	
+          	context.stroke(); 
+		}
+		
+		function test(){
+			alert('hello,world');
+		}
+		
+		
+	</script>
+</body>
+</html>
