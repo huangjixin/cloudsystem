@@ -52,7 +52,25 @@ services:
     environment:
      - PROFILE=dev
      - HOST=Aserver
-     
+   
+    micro-cloud-admin-system:
+    image: micro-cloud-admin-system:0.0.1
+    # 去阿里云拉镜像 registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-system-0.0.1
+    #container_name: micro-cloud-admin-system
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    networks:
+      cloudsystem-overlay:
+        aliases:
+          - Asystem
+    ports:
+     - 8765:8765
+    environment:
+     - PROFILE=dev
+     - HOST=Aserver
+        
 networks:
   cloudsystem-overlay:
     external:
