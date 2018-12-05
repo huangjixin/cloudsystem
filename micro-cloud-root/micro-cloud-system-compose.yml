@@ -1,7 +1,8 @@
 version: "3" 
 services:
   micro-cloud-admin-system:
-    image: registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-system-0.0.1
+    image: micro-cloud-admin-system:0.0.1
+    # 去阿里云拉镜像 registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-system-0.0.1
     #container_name: micro-cloud-admin-system
     deploy:
       replicas: 2
