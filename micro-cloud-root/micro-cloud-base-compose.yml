@@ -11,12 +11,12 @@ services:
     networks:
       cloudsystem-overlay:
         aliases:
-          - Aserver
+          - admin-server
     ports:
      - 8761:8761
     environment:
      - PROFILE=dev
-     - HOST=Aserver
+     - HOST=admin-server
      
   micro-cloud-admin-config:
     image: micro-cloud-admin-config:0.0.1
@@ -29,12 +29,12 @@ services:
     networks:
       cloudsystem-overlay:
         aliases:
-          - Aconfig
+          - admin-config
     ports:
      - 8762:8762
     environment:
      - PROFILE=dev
-     - HOST=Aserver
+     - HOST=admin-server
     
   micro-cloud-admin-zuul:
     image: micro-cloud-admin-zuul:0.0.1
@@ -46,12 +46,12 @@ services:
     networks:
       cloudsystem-overlay:
         aliases:
-          - Azuul 
+          - gateway-service-zuul 
     ports:
      - 8760:8760
     environment:
      - PROFILE=dev
-     - HOST=Aserver
+     - HOST=admin-server
 
         
 networks:
