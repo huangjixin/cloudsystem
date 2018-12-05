@@ -53,7 +53,7 @@ services:
      - PROFILE=dev
      - HOST=Aserver
    
-    micro-cloud-admin-system:
+  micro-cloud-admin-system:
     image: micro-cloud-admin-system:0.0.1
     # 去阿里云拉镜像 registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-system-0.0.1
     #container_name: micro-cloud-admin-system
