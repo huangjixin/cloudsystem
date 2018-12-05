@@ -40,7 +40,7 @@ services:
     image: micro-cloud-admin-zuul:0.0.1
     #container_name: micro-cloud-admin-zuul
     deploy:
-      replicas: 1
+      replicas: 2
       restart_policy:
         condition: on-failure
     networks:
