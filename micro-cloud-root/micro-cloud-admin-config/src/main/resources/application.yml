@@ -3,6 +3,13 @@ server:
 spring:
   application:
     name: admin-config
+  profiles:
+    active: native
+  cloud:
+    config:
+      enabled: true
+    inetutils:
+      timeout-seconds: 10   
 eureka:
   client:
     serviceUrl:
