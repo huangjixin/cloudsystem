@@ -1,0 +1,22 @@
+version: "3"
+services:
+  mysql:
+    image: mysql
+    networks:
+      bhmall-overlay:
+        aliases:
+          - bhmall-mysql
+    ports:
+     - "44417:3306"
+    volumes:
+     - ./mysql/my.cnf:/etc/mysql/my.cnf
+     - /data/mysql/logs:/logs
+     - /data/mysql/data:/var/lib/mysql
+     - ./mysql/:/opt/
+    environment:
+     - MYSQL_ROOT_PASSWORD=zhiyeDEV654321
+
+networks:
+  bhmall-overlay:
+    external:
+      name: bhmall-overlay

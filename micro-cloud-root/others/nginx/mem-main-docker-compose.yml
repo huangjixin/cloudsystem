@@ -1,0 +1,57 @@
+version: "2"
+services:
+  bhmall-mem-cms:
+    image: bhmall-mem-cms:0.0.1
+    restart: always
+    container_name: bhmall-mem-cms
+    network_mode: host
+    environment:
+    - SERVER_PORT=-Dserver.port=8765
+
+  bhmall-mem-goods:
+    image: bhmall-mem-goods:0.0.1
+    restart: always
+    container_name: bhmall-mem-goods
+    network_mode: host
+    environment:
+    - SERVER_PORT=-Dserver.port=8767
+
+  bhmall-mem-order:
+    image: bhmall-mem-order:0.0.1
+    restart: always
+    container_name: bhmall-mem-order
+    network_mode: host
+    environment:
+    - SERVER_PORT=-Dserver.port=8771
+
+  bhmall-mem-shop:
+    image: bhmall-mem-shop:0.0.1
+    restart: always
+    container_name: bhmall-mem-shop
+    network_mode: host
+    environment:
+    - SERVER_PORT=-Dserver.port=8777
+
+  bhmall-mem-user:
+    image: bhmall-mem-user:0.0.1
+    restart: always
+    container_name: bhmall-mem-user
+    network_mode: host
+    environment:
+    - SERVER_PORT=-Dserver.port=8773
+
+  bhmall-mem-upload:
+    image: bhmall-mem-upload:0.0.1
+    restart: always
+    container_name: bhmall-mem-upload
+    network_mode: host
+    environment:
+    - SERVER_PORT=-Dserver.port=8779
+
+  bhmall-mautho:
+    image: bhmall-mautho:0.0.1
+    restart: always
+    container_name: bhmall-mautho
+    network_mode: host
+    environment:
+    - SERVER_PORT=-Dserver.port=8781

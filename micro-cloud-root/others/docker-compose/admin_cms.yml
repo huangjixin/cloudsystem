@@ -1,0 +1,25 @@
+version: "3"
+services:
+  admin_cms:
+    image: bhmall-admin-cms:0.0.1
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+    networks:
+     - bhmall-overlay
+    ports:
+     - "8765:8765"
+    environment:
+     - HOST=Aserver
+     - PROFILE=swarm
+     - MYSQL=bhmall-mysql
+     - REDIS=bhmall-redis
+
+networks:
+  bhmall-overlay:
+    external:
+      name: bhmall-overlay

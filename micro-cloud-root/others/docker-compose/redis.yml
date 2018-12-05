@@ -1,0 +1,19 @@
+version: "3"
+services:
+  redis:
+    image: redis
+    networks:
+      bhmall-overlay:
+        aliases:
+          - bhmall-redis
+    ports:
+     - "6379:6379"
+    volumes:
+     - ./redis/redis.conf:/etc/redis/redis.conf
+     - /data/redis/data:/data
+    command: "redis-server /etc/redis/redis.conf --appendonly yes"
+
+networks:
+  bhmall-overlay:
+    external:
+      name: bhmall-overlay
