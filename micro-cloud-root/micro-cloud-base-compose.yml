@@ -51,7 +51,7 @@ services:
      - 8760:8760
     environment:
      - PROFILE=dev
-     - HOST=Aserver
+     - HOST=Aserver 
         
 networks:
   cloudsystem-overlay:
