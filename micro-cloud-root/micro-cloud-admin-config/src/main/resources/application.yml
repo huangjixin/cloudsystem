@@ -2,7 +2,7 @@ server:
   port: 8762
 spring:
   application:
-    name: admin-config
+    name: config
   profiles:
     active: native
   cloud:
