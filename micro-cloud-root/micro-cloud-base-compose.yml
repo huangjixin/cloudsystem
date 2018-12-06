@@ -1,6 +1,6 @@
 version: "3"  
 services:
-  micro-cloud-adminserver:
+  micro-cloud-admin-server:
     image: micro-cloud-admin-server:0.0.1
    # 到阿里云拉镜像 registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-adminserver-0.0.1
    # container_name: micro-cloud-adminserver 
