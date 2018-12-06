@@ -11,12 +11,12 @@ services:
     networks:
       cloudsystem-overlay:
         aliases:
-          - Asystem
+          - system-service
     ports:
      - 8765:8765
     environment:
      - PROFILE=dev
-     - HOST=Aserver
+     - HOST=admin-server
  
 networks:
   cloudsystem-overlay:
