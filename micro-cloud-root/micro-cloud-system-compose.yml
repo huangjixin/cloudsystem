@@ -16,7 +16,7 @@ services:
      - 8765:8765
     environment:
      - PROFILE=dev
-     - HOST=admin-server
+     - HOST=adminserver
  
 networks:
   cloudsystem-overlay:
