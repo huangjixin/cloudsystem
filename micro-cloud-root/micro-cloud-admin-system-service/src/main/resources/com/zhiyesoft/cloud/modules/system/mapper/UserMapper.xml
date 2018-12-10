@@ -25,9 +25,26 @@
   </resultMap>
   
   <resultMap id="UserVoMap" type="com.zhiyesoft.cloud.modules.system.vo.UserVo" extends="BaseResultMap">
+  		<!-- <id column="ID" jdbcType="VARCHAR" property="id" />
+	    <result column="NAME" jdbcType="VARCHAR" property="name" />
+	    <result column="CODE" jdbcType="VARCHAR" property="code" />
+	    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+	    <result column="TYPE" jdbcType="INTEGER" property="type" />
+	    <result column="IS_LOCKED" jdbcType="INTEGER" property="isLocked" />
+	    <result column="IS_VALID" jdbcType="INTEGER" property="isValid" />
+	    <result column="SORT_NUM" jdbcType="INTEGER" property="sortNum" />
+	    <result column="CREATE_BY" jdbcType="VARCHAR" property="createBy" />
+	    <result column="UPDATE_BY" jdbcType="VARCHAR" property="updateBy" />
+	    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+	    <result column="LOGIN_NAME" jdbcType="VARCHAR" property="loginName" />
+	    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+	    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+	    <result column="ICON" jdbcType="VARCHAR" property="icon" />
+	    <result column="MOBILE" jdbcType="VARCHAR" property="mobile" /> -->
     	<collection property="roles"
 			ofType="com.zhiyesoft.cloud.modules.system.domain.Role">
-			<id column="r_id" jdbcType="VARCHAR" property="Id" />
+			<id column="r_id" jdbcType="VARCHAR" property="id" />
 			<result column="r_NAME" jdbcType="VARCHAR" property="name" />
 		    <result column="r_CODE" jdbcType="VARCHAR" property="code" />
 		    <result column="r_STATUS" jdbcType="INTEGER" property="status" />

@@ -19,6 +19,8 @@
     <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="PARENT_ID" jdbcType="VARCHAR" property="parentId" />
     <result column="ICON" jdbcType="VARCHAR" property="icon" />
+    <result column="LEVEL" jdbcType="INTEGER" property="level" />
+    <result column="IS_LEAF" jdbcType="TINYINT" property="isLeaf" />
   </resultMap>
   
 </mapper>
