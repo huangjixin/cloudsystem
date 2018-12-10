@@ -1,0 +1,25 @@
+version: "3" 
+services:
+  micro-cloud-admin-security:
+    image: micro-cloud-admin-security:0.0.1
+    # 去阿里云拉镜像 registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-security-0.0.1
+    #container_name: micro-cloud-admin-security
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      cloudsystem-overlay:
+        aliases:
+          - security
+    ports:
+     - 8769:8769
+    environment:
+     - PROFILE=dev
+     - HOST=adminserver
+     - CONFIG=adminconfig
+ 
+networks:
+  cloudsystem-overlay:
+    external:
+      name: cloudsystem-overlay
