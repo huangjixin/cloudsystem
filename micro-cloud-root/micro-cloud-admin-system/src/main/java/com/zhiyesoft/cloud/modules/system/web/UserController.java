@@ -58,7 +58,7 @@ public class UserController extends BaseController {
     @ApiOperation(value = "查看对象", notes = "")
     @GetMapping(value = "view")
     @ResponseBody
-    public Response getById(@RequestParam(name = "id") String id) {
+    public Response getById(@RequestParam(name = "id", required = true) String id) {
         Response response ;
         response = new Response();
         User user =  this.userService.selectByPrimaryKey(id);

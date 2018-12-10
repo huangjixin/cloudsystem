@@ -9,7 +9,10 @@ import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import lombok.Data;
+
 @Table(name = "system_resource")
+@Data
 public class Resource implements Serializable,GrantedAuthority {
     @Id
     @Column(name = "ID")

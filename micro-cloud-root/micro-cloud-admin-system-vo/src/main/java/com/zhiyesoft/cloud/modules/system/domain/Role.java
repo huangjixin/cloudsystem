@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
+import lombok.Data;
+
+@Data
 @Table(name = "system_role")
 public class Role implements Serializable {
     @Id

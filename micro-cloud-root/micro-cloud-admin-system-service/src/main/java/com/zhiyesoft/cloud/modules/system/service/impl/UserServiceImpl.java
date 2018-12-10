@@ -14,6 +14,7 @@ import com.zhiyesoft.cloud.basic.core.service.impl.BaseServiceImpl;
 import com.zhiyesoft.cloud.modules.system.domain.User;
 import com.zhiyesoft.cloud.modules.system.mapper.UserMapper;
 import com.zhiyesoft.cloud.modules.system.service.IUserService;
+import com.zhiyesoft.cloud.modules.system.vo.UserVo;
 
 /**
  * @author 黄记新
@@ -55,6 +56,20 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
 	@Override
 	protected Logger getLogger() {
 		return logger;
+	}
+
+	@Override
+	public UserVo selectByUsername(String username) {
+		UserVo userVo = null;
+		if(getLogger().isDebugEnabled()) {
+			getLogger().debug(getBaseMessage()+"selectByUsername查询对象开始，传入的参数是："+username);
+		}
+		userVo = this.userMapper.selectByUsername(username);
+		if(getLogger().isDebugEnabled()) {
+			getLogger().debug(getBaseMessage()+"selectByUsername查询对象结束，结果是："+(userVo==null?"查询不到数据":userVo.toString()));
+		}
+		
+		return userVo;
 	}
 
 }

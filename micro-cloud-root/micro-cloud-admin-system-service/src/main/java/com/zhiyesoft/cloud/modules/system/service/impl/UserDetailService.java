@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.zhiyesoft.cloud.modules.system.domain.User;
 import com.zhiyesoft.cloud.modules.system.domain.UserCriteria;
 import com.zhiyesoft.cloud.modules.system.service.IUserService;
+import com.zhiyesoft.cloud.modules.system.vo.UserVo;
 
 @Service
 public class UserDetailService implements UserDetailsService {
@@ -20,12 +21,13 @@ public class UserDetailService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserCriteria userCriteria = new UserCriteria();
+		/*UserCriteria userCriteria = new UserCriteria();
 		userCriteria.createCriteria().andLoginNameEqualTo(username);
 		userCriteria.or(userCriteria.createCriteria().andMobileEqualTo(username));
 		List<User> list = this.userService.selectByExample(userCriteria);
-		UserDetails userDetails = ((list!=null && list.size()>0?list.get(0):null));
-		return userDetails;
+		UserDetails userDetails = ((list!=null && list.size()>0?list.get(0):null));*/
+		UserVo userVo = this.userService.selectByUsername(username);
+		return userVo;
 	}
 
 }

@@ -24,4 +24,89 @@
     <result column="MOBILE" jdbcType="VARCHAR" property="mobile" />
   </resultMap>
   
+  <resultMap id="UserVoMap" type="com.zhiyesoft.cloud.modules.system.vo.UserVo" extends="BaseResultMap">
+    	<collection property="roles"
+			ofType="com.zhiyesoft.cloud.modules.system.domain.Role">
+			<id column="r_id" jdbcType="VARCHAR" property="Id" />
+			<result column="r_NAME" jdbcType="VARCHAR" property="name" />
+		    <result column="r_CODE" jdbcType="VARCHAR" property="code" />
+		    <result column="r_STATUS" jdbcType="INTEGER" property="status" />
+		    <result column="r_TYPE" jdbcType="INTEGER" property="type" />
+		    <result column="r_IS_LOCKED" jdbcType="INTEGER" property="isLocked" />
+		    <result column="r_IS_VALID" jdbcType="INTEGER" property="isValid" />
+		    <result column="r_SORT_NUM" jdbcType="INTEGER" property="sortNum" />
+		    <result column="r_CREATE_BY" jdbcType="VARCHAR" property="createBy" />
+		    <result column="r_UPDATE_BY" jdbcType="VARCHAR" property="updateBy" />
+		    <result column="r_CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		    <result column="r_UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+		    <result column="r_ICON" jdbcType="VARCHAR" property="icon" />
+		</collection>
+
+		<collection property="resources"
+			ofType="com.zhiyesoft.cloud.modules.system.domain.Resource">
+			<id column="ID" jdbcType="VARCHAR" property="id" />
+		    <result column="M_NAME" jdbcType="VARCHAR" property="name" />
+		    <result column="M_CODE" jdbcType="VARCHAR" property="code" />
+		    <result column="M_STATUS" jdbcType="INTEGER" property="status" />
+		    <result column="M_TYPE" jdbcType="INTEGER" property="type" />
+		    <result column="M_IS_LOCKED" jdbcType="INTEGER" property="isLocked" />
+		    <result column="M_IS_VALID" jdbcType="INTEGER" property="isValid" />
+		    <result column="M_SORT_NUM" jdbcType="INTEGER" property="sortNum" />
+		    <result column="M_CREATE_BY" jdbcType="VARCHAR" property="createBy" />
+		    <result column="M_UPDATE_BY" jdbcType="VARCHAR" property="updateBy" />
+		    <result column="M_CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		    <result column="M_UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+		    <result column="M_PARENT_ID" jdbcType="VARCHAR" property="parentId" />
+		    <result column="M_ICON" jdbcType="VARCHAR" property="icon" />
+		    <result column="M_LEVEL" jdbcType="INTEGER" property="level" />
+		    <result column="M_IS_LEAF" jdbcType="TINYINT" property="isLeaf" />
+		</collection>
+  </resultMap>
+  
+  <select id="selectByUsername" resultMap="UserVoMap">
+  		SELECT DISTINCT
+		    u.*, 
+		    
+		    r.ID as r_ID, 
+		    r.NAME as r_NAME, 
+		    r.CODE as r_CODE,
+		     r.STATUS as r_STATUS,
+		     r.TYPE as r_TYPE,
+		     r.IS_LOCKED as r_IS_LOCKED,
+		     r.IS_VALID as r_IS_VALID,
+		     r.SORT_NUM as r_SORT_NUM,
+		     r.CREATE_BY as r_CREATE_BY,
+		     r.UPDATE_BY as r_UPDATE_BY,
+    		 r.CREATE_TIME as r_CREATE_TIME,
+    		 r.UPDATE_TIME as r_UPDATE_TIME, 
+    		 r.ICON as r_ICON, 
+		    m.ID as M_ID, 
+		    m.NAME as M_NAME,
+		     m.CODE as M_CODE, 
+		     m.STATUS as M_STATUS, 
+		     m.TYPE as M_TYPE, 
+		     m.IS_LOCKED as M_IS_LOCKED, 
+		     m.IS_VALID as M_IS_VALID, 
+		     m.SORT_NUM as M_SORT_NUM, 
+		     m.CREATE_BY as M_CREATE_BY, 
+		     m.UPDATE_BY as M_UPDATE_BY, 
+    		 m.CREATE_TIME as M_CREATE_TIME,
+    		 m.UPDATE_TIME as M_UPDATE_TIME,
+    		 m.PARENT_ID as M_PARENT_ID,
+    		 m.ICON, LEVEL as M_ICON,
+    		 m.IS_LEAF as M_IS_LEAF
+		FROM
+		    system_user u
+		        LEFT JOIN
+		    system_user_role e ON u.id = e.user_id
+		        LEFT JOIN
+		    system_role r ON e.role_id = r.id
+		        LEFT JOIN
+		    system_role_resource b ON r.id = b.role_id
+		        LEFT JOIN
+		    system_resource m ON b.resource_id = m.id
+		WHERE
+		    u.login_name = #{username}
+		        OR u.mobile = #{username}
+	</select>	 
 </mapper>

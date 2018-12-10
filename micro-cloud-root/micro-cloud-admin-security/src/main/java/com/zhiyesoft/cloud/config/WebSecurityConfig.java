@@ -3,6 +3,8 @@
  */
 package com.zhiyesoft.cloud.config;
 
+import java.util.Base64;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.jwt.Jwt;
+import org.springframework.security.jwt.JwtHelper;
 
 import com.zhiyesoft.cloud.modules.system.service.impl.UserDetailService;
 
@@ -62,14 +66,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 
-//	public static void main(String[] args) {
-//		String content = "user-service:123456";
-//		String encodeContent = Base64.getEncoder().encodeToString(content.getBytes());
-//		System.out.println(encodeContent);
-//		byte[] bs = Base64.getDecoder().decode(encodeContent);
-//		String res = new String(bs);
-//		System.out.println(res);
-//    	Jwt jwt = JwtHelper.decode("eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mzg3ODA0NDcsInVzZXJfbmFtZSI6IjEiLCJhdXRob3JpdGllcyI6WyJzeXN0ZW06dXNlciIsInN5c3RlbTpyZXNvdXJjZTplZGl0Iiwic3lzdGVtOnVzZXI6dmlldyIsInN5c3RlbTpyZXNvdXJjZSIsInN5c3RlbTpyZXNvdXJjZTp2aWV3Iiwic3lzdGVtOnVzZXI6ZGVsZXRlIiwic3lzdGVtOnJlc291cmNlOmRlbGV0ZSIsInN5c3RlbTp1c2VyOmVkaXQiXSwianRpIjoiYzE0MDY4YmItYWI2Mi00MDEyLWE5OTEtMTA0ZGJhNmFmMjU3IiwiY2xpZW50X2lkIjoidXNlci1zZXJ2aWNlIiwic2NvcGUiOlsic2VydmljZSJdfQ.T2MWvmIqbjfLTZCIiSIQq_5IgaCPUxwDChQxbvnccoRyDr_luhjPKSeJC59W6XBPU4lUC4yCdFpQa9BdnzW2cSRk6hnHXoxlXE1IvpUj4zkmHbnn4ZOYPk7bY81warvreOz_SWHp7BiNgOr5XvLdTyBLhFhRRfF5lcXq8spo2nBQUYppWAX-ZcFJksnGhgRc4nf1g_g0t3iOS0_UzZ9ydm6PqKZhEJRrsGkyvNjTC0v7-F27rGnyBn6mmS349--lfFX800x_0XN0KmKsMg1eJJbGn5uGU_6gUDOKsb7-TaMXyoQhMopXZy6O0coRmsi8jpquzbTBJpUHRj5fG9XNUQ");
-//    	System.out.println(jwt.getClaims());
-//	}
+	public static void main(String[] args) {
+		String content = "security-service:123456";
+		String encodeContent = Base64.getEncoder().encodeToString(content.getBytes());
+		System.out.println(encodeContent);
+		byte[] bs = Base64.getDecoder().decode(encodeContent);
+		String res = new String(bs);
+		System.out.println(res);
+    	Jwt jwt = JwtHelper.decode("eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjMxODQ2OTEzNDcsInVzZXJfbmFtZSI6IjEiLCJqdGkiOiJlYjQwNGY2YS1hMDViLTRhNjYtYTgzMS04OTFlNmQ0M2FlNjUiLCJjbGllbnRfaWQiOiJzZWN1cml0eS1zZXJ2aWNlIiwic2NvcGUiOlsic2VydmljZSJdfQ.fGY9jPftqFbkhcv3Z66J77bNH1KIjO8C4X6ZMpyWp_8FWEBoLqz72uRChBbqsFVZIZe8LvppBGj7To6vafsEE-l6A_NM616zeGGUDhDPmBV0ymJIrWsNOGLT2WgFj5xrOYZvxsXuXjTcg_OiOKw7EcRFnbSZjlViHRZ9NBvxmHd1-I6m_Krms40JobwK5eyXZgSTm863Zc2GZXyFAIhxXHkG7erRPnHHZlueekSeNYd2w8QgNE_E59qEandYQ-SUW3Xs-zrWCImvaUgbh1It9Rgjpo1CWgJ5pVANQQt1uMiKlacbJ_-omS48RLUchmMsUb4jwtnClwYmM56b-KTiXw");
+    	System.out.println(jwt.getClaims());
+	}
 }
