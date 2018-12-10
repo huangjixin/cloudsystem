@@ -17,6 +17,7 @@ services:
     environment:
      - PROFILE=dev
      - HOST=adminserver
+     - eureka.environment=dev
      
   micro-cloud-admin-config:
     image: micro-cloud-admin-config:0.0.1
