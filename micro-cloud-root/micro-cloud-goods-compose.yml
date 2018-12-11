@@ -1,6 +1,6 @@
 version: "3" 
 services:
-  micro-cloud-admin-system:
+  micro-cloud-admin-goods:
     image: micro-cloud-admin-goods:0.0.1
     # 去阿里云拉镜像 registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-goods-0.0.1
     #container_name: micro-cloud-admin-goods
