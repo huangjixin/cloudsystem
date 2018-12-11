@@ -13,7 +13,7 @@ services:
         aliases:
           - goods
     ports:
-     - 8765:8765
+     - 8767:8767
     environment:
      - PROFILE=dev
      - HOST=adminserver
