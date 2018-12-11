@@ -11,7 +11,7 @@ services:
     networks:
       cloudsystem-overlay:
         aliases:
-          - admingoods
+          - goods-service
     ports:
      - 8767:8767
     environment:

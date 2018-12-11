@@ -11,7 +11,7 @@ services:
     networks:
       cloudsystem-overlay:
         aliases:
-          - adminmember
+          - member-service
     ports:
      - 8773:8773
     environment:

@@ -11,7 +11,7 @@ services:
     networks:
       cloudsystem-overlay:
         aliases:
-          - adminsystem
+          - system-service
     ports:
      - 8765:8765
     environment:
