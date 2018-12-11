@@ -16,7 +16,7 @@ services:
      - 8769:8769
     environment:
      - PROFILE=dev
-     - HOST=adminserver
+     - HOST=adminserver 
  
 networks:
   cloudsystem-overlay:
