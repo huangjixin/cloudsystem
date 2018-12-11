@@ -1,0 +1,25 @@
+version: "3" 
+services:
+  micro-cloud-admin-system:
+    image: micro-cloud-admin-goods:0.0.1
+    # 去阿里云拉镜像 registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-goods-0.0.1
+    #container_name: micro-cloud-admin-goods
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      cloudsystem-overlay:
+        aliases:
+          - goods
+    ports:
+     - 8765:8765
+    environment:
+     - PROFILE=dev
+     - HOST=adminserver
+     - CONFIG=adminconfig
+ 
+networks:
+  cloudsystem-overlay:
+    external:
+      name: cloudsystem-overlay
