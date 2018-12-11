@@ -25,8 +25,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.zhiyesoft.cloud.system-service</groupId>
-			<artifactId>micro-cloud-admin-system-service</artifactId>
+			<groupId>com.zhiyesoft.cloud.admin-member-service</groupId>
+			<artifactId>micro-cloud-admin-member-service</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>
