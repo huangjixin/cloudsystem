@@ -93,10 +93,12 @@ sleep 20s
 echo '移除含有名字含有micro-cloud字符串的服务结束'
 
 echo '退出集群'
-docker swarm leave &
+docker swarm leave --force &
+sleep 10s
 
 echo '创建集群'
 docker swarm init &
+sleep 10s
 echo '集群创建成功'
 
 echo '开始创建添加集群结点shell文件'
@@ -133,6 +135,7 @@ Exec command:
 #!/bin/bash
 echo '退出集群'
 docker swarm leave --force &
+sleep 10s
 
 echo '运行添加集群结点shell文件'
 cd /u06/root/pkg/others/
@@ -171,6 +174,7 @@ echo '移除含有名字含有none字符串的镜像结束'
 
 echo '创建overlay网络开始'
 docker network create -d overlay --subnet=10.10.0.0/16 --gateway=10.10.0.254 --attachable=true cloudsystem-overlay &
+sleep 10s
 echo '创建overlay网络结束'
 
 echo '跳转至/root/.jenkins/workspace/'$JOB_NAME'/micro-cloud-root'
