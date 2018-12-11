@@ -17,7 +17,7 @@ services:
     environment:
      - PROFILE=dev
      - HOST=adminserver
-     - CONFIG=adminconfig 
+     - CONFIG=adminconfig
  
 networks:
   cloudsystem-overlay:
