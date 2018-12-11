@@ -195,5 +195,8 @@ sleep 3s
 echo '执行micro-cloud-member-compose会员模块开始'
 docker stack deploy -c micro-cloud-member-compose.yml system
 echo '执行micro-cloud-member-compose会员模块结束'
+sleep 3s
 
-5.创建docker swarm集群网络
+echo '执行micro-cloud-goods-compose商品模块开始'
+docker stack deploy -c micro-cloud-goods-compose.yml system
+echo '执行micro-cloud-goods-compose商品模块结束'
