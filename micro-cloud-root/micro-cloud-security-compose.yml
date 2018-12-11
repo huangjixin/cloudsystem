@@ -11,7 +11,7 @@ services:
     networks:
       cloudsystem-overlay:
         aliases:
-          - security
+          - security-service
     ports:
      - 8769:8769
     environment:
