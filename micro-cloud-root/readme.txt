@@ -190,3 +190,5 @@ sleep 3s
 echo '执行micro-cloud-security-compose安全模块开始'
 docker stack deploy -c micro-cloud-security-compose.yml system
 echo '执行micro-cloud-security-compose安全模块结束'
+
+5.创建docker swarm集群网络
