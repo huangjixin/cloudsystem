@@ -5,13 +5,13 @@ services:
     # 去阿里云拉镜像 registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-member-0.0.1
     #container_name: micro-cloud-admin-member
     deploy:
-      replicas: 2
+      replicas: 1
       restart_policy:
         condition: on-failure
     networks:
       cloudsystem-overlay:
         aliases:
-          - member
+          - adminmember
     ports:
      - 8773:8773
     environment:
