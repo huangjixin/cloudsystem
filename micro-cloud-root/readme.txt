@@ -132,7 +132,7 @@ Remote directory:/u06/root/pkg/others/
 Exec command:
 #!/bin/bash
 echo '退出集群'
-docker swarm leave &
+docker swarm leave --force &
 
 echo '运行添加集群结点shell文件'
 cd /u06/root/pkg/others/
