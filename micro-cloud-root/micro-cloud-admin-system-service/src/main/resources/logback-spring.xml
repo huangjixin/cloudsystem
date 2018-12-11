@@ -41,11 +41,11 @@
 	</appender>
 
 	<!-- 日志输出级别 -->
-	<!-- <root level="INFO">
-		<appender-ref ref="FILE" />
-		生产环境将请stdout,testfile去掉
+	<root level="INFO">
+		<!-- <appender-ref ref="FILE" /> -->
+		<!-- 生产环境将请stdout,testfile去掉 -->
 		<appender-ref ref="STDOUT" />
-	</root> -->
+	</root>
 	<root level="DEBUG">
 		<appender-ref ref="STDOUT" />
 	</root>
