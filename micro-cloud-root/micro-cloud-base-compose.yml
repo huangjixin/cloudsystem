@@ -47,7 +47,7 @@ services:
     networks:
       cloudsystem-overlay:
         aliases:
-          - zuul 
+          - adminzuul 
     ports:
      - 8760:8760
     environment:
