@@ -53,6 +53,10 @@ services:
     environment:
      - PROFILE=dev
      - HOST=adminserver
+     - zuul.routes.system-service.url=http://system-service:8765/
+     - zuul.routes.security-service.url=http://security-service:8769/
+     - zuul.routes.goods-service.url=http://goods-service:8765/
+     - zuul.routes.member-service.url=http://member-service:8767/
         
 networks: 
   cloudsystem-overlay:
