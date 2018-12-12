@@ -79,6 +79,6 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
 				// 开启/oauth/check_token验证端口认证权限访问
 				.checkTokenAccess("isAuthenticated()")
 				.allowFormAuthenticationForClients();
-				oauthServer.allowFormAuthenticationForClients();
+//				oauthServer.allowFormAuthenticationForClients();
 	}
 }
