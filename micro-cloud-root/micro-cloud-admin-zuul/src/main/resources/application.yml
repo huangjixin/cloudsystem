@@ -25,23 +25,19 @@ zuul:
     retryable: true
     routes:
         system-service:
-            path: /system-service/
-            serviceId: system-service
+            path: /system-service/**
             url: http://system-service:8765/
             sensitive-headers:
         security-service:
-            path: /security-service/
-            serviceId: security-service
+            path: /security-service/**
             url: http://security-service:8769/
             sensitive-headers:
         goods-service:
-            path: /goods-service/
-            serviceId: goods-service
+            path: /goods-service/**
             url: http://goods-service:8765/
             sensitive-headers:
         member-service:
-            path: /member-service/
-            serviceId: member-service
+            path: /member-service/**
             url: http://member-service:8767/
             sensitive-headers:
             
