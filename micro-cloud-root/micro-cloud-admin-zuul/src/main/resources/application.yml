@@ -34,7 +34,7 @@ zuul:
             sensitive-headers:
         goods-service:
             path: /goods-service/**
-            url: http://goods-service:8765/
+            url: http://goods-service:8765/ 
             sensitive-headers:
         member-service:
             path: /member-service/**
