@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50723
 File Encoding         : 65001
 
-Date: 2018-11-22 20:23:07
+Date: 2018-12-13 19:21:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,7 +46,7 @@ CREATE TABLE `art_article` (
   KEY `SORT_INDEX` (`SORT_NUM`),
   KEY `FK_ART_ARTICLE_TO_ART_CATEGORY_idx` (`ICON_URL`),
   CONSTRAINT `FK_ART_ARTICLE_TO_ART_CATEGORY` FOREIGN KEY (`ICON_URL`) REFERENCES `cms_category` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='物品';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='物品';
 
 -- ----------------------------
 -- Records of art_article
@@ -83,7 +83,7 @@ CREATE TABLE `art_article_sku` (
   KEY `FK_ART_ARTICLE_SKU_TO_MEM_MEMBER_idx` (`MEMBER_ID`),
   CONSTRAINT `FK_ART_ARTICLE_SKU_TO_ART_ARTICLE` FOREIGN KEY (`ARTICLE_ID`) REFERENCES `art_article` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_ART_ARTICLE_SKU_TO_MEM_MEMBER` FOREIGN KEY (`MEMBER_ID`) REFERENCES `mem_member` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='物品sku';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='物品sku';
 
 -- ----------------------------
 -- Records of art_article_sku
@@ -414,8 +414,11 @@ CREATE TABLE `gue_category` (
   `UPDATE_TIME` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `ICON` varchar(512) DEFAULT NULL,
   `DESCRIPTION` varchar(512) DEFAULT NULL,
+  `PARENT_ID` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `SORT_INDEX` (`SORT_NUM`)
+  KEY `SORT_INDEX` (`SORT_NUM`),
+  KEY `FK_GUE_CATEGORY_TO_GUE_CATEGORY_idx` (`PARENT_ID`),
+  CONSTRAINT `FK_GUE_CATEGORY_TO_GUE_CATEGORY` FOREIGN KEY (`PARENT_ID`) REFERENCES `gue_category` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
@@ -975,11 +978,12 @@ CREATE TABLE `mem_member` (
   `UNION_ID` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `SORT_INDEX` (`SORT_NUM`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='会员';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='会员';
 
 -- ----------------------------
 -- Records of mem_member
 -- ----------------------------
+INSERT INTO `mem_member` VALUES ('1', '1', null, null, null, '0', '1', '1', null, null, '2018-12-11 11:55:12', null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for mem_member_article
@@ -1541,11 +1545,12 @@ CREATE TABLE `system_resource` (
   KEY `SORT_INDEX` (`SORT_NUM`),
   KEY `FK_TB_RESOURCE_PARENT_ID_TO_TB_RESOURCE_idx` (`PARENT_ID`),
   CONSTRAINT `FK_SYSTEM_RESOURCE_TO_SYSTEM_RESOURCE` FOREIGN KEY (`PARENT_ID`) REFERENCES `system_resource` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='系统资源';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='系统资源';
 
 -- ----------------------------
 -- Records of system_resource
 -- ----------------------------
+INSERT INTO `system_resource` VALUES ('1', '1', null, null, null, '0', '1', '1', null, null, '2018-12-10 17:09:22', null, null, null, '0', '1');
 
 -- ----------------------------
 -- Table structure for system_role
@@ -1567,11 +1572,12 @@ CREATE TABLE `system_role` (
   `ICON` varchar(512) DEFAULT NULL COMMENT '缩略图',
   PRIMARY KEY (`ID`),
   KEY `sort_index` (`SORT_NUM`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='角色';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='角色';
 
 -- ----------------------------
 -- Records of system_role
 -- ----------------------------
+INSERT INTO `system_role` VALUES ('1', '1', null, null, null, '0', '1', '1', null, null, '2018-12-10 17:09:10', null, null);
 
 -- ----------------------------
 -- Table structure for system_role_resource
@@ -1602,6 +1608,7 @@ CREATE TABLE `system_role_resource` (
 -- ----------------------------
 -- Records of system_role_resource
 -- ----------------------------
+INSERT INTO `system_role_resource` VALUES ('1', null, null, null, null, null, '1', null, null, null, '2018-12-10 17:09:36', null, '1', '1');
 
 -- ----------------------------
 -- Table structure for system_user
@@ -1663,6 +1670,7 @@ CREATE TABLE `system_user_role` (
 -- ----------------------------
 -- Records of system_user_role
 -- ----------------------------
+INSERT INTO `system_user_role` VALUES ('1', null, null, null, null, '0', '1', null, null, null, '2018-12-10 17:09:47', null, '1', '1');
 
 -- ----------------------------
 -- Function structure for getArtCategoryChildren
