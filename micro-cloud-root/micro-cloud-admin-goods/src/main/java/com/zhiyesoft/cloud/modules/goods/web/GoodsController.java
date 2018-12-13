@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiOperation;
  */
 @Api(tags = "系统用户后台控制器Api", description = "系统用户后台控制器api，包括提供基础的增删改查")
 @Controller
-@RequestMapping("user")
+@RequestMapping("goods")
 public class GoodsController extends BaseController {
 	
 	@Autowired
@@ -61,8 +61,8 @@ public class GoodsController extends BaseController {
     public Response getById(@RequestParam(name = "id", required = true) String id) {
         Response response ;
         response = new Response();
-        Goods user =  this.goodsService.selectByPrimaryKey(id);
-        response.setData(user);
+        Goods goods =  this.goodsService.selectByPrimaryKey(id);
+        response.setData(goods);
         return response;
     }
 
