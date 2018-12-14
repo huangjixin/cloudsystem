@@ -2,7 +2,8 @@ FROM frolvlad/alpine-oraclejdk8:slim
 VOLUME /tmp
 ADD *.jar app.jar
 #RUN sh -c 'touch /app.jar'
-ENV JAVA_OPTS="-Xms256m -Xmx512m"
+#ENV JAVA_OPTS="-Xms256m -Xmx512m"
+ENV JAVA_OPTS=""
 ENV PROFILE="dev"
 ENV HOST="localhost"
 ENV CONFIG="localhost"
