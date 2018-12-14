@@ -1,0 +1,92 @@
+1.构建命令：clean install -Dmaven.test.skip=true docker:build
+2.执行shell
+#!/bin/bash
+echo '===============开始移除所有容器==============='
+old_comtainer=$(sudo docker ps -a | grep bhmall- | grep -v server | grep -v config | grep -v zuul | awk '{print $1}')
+if [ "$old_comtainer" != "" ]; then
+sudo docker rm -f $(sudo docker ps -a | grep bhmall- | grep -v server | grep -v config | grep -v zuul | awk '{print $1}')
+fi
+echo '===============移除所有容器完毕==============='
+
+echo '===============开始移除所有镜像==============='
+old_images=$(sudo docker images | grep none | awk '{print $3}')
+if [ "$old_images" != "" ]; then
+sudo docker rmi -f $(sudo docker images | grep none | awk '{print $3}')
+fi
+
+old_images=$(sudo docker images | grep admin | awk '{print $3}')
+if [ "$old_images" != "" ]; then
+sudo docker rmi -f $(sudo docker images | grep admin | awk '{print $3}')
+fi
+echo '===============移除所有镜像完毕==============='
+
+echo '===============开始运行所有容器==============='
+cd /u06/ceta/pkg/docker-compose
+sudo docker-compose -f mem-main-docker-compose.yml up -d
+echo '===============运行所有容器完毕，up是启动的意思 -d表示后台运行==============='
+
+mem-main-docker-compose.yml的详情是
+version: "2"
+services:
+  bhmall-mem-cms:
+    image: bhmall-mem-cms:0.0.1
+    restart: always
+    container_name: bhmall-mem-cms
+    network_mode: host
+    environment:
+     - SERVER_PORT=-Dserver.port=8765
+     - PROFILE=--spring.cloud.config.profile=test
+
+  bhmall-mem-goods:
+    image: bhmall-mem-goods:0.0.1
+    restart: always
+    container_name: bhmall-mem-goods
+    network_mode: host
+    environment:
+     - SERVER_PORT=-Dserver.port=8767
+     - PROFILE=--spring.cloud.config.profile=test
+
+  bhmall-mem-order:
+    image: bhmall-mem-order:0.0.1
+    restart: always
+    container_name: bhmall-mem-order
+    network_mode: host
+    environment:
+     - SERVER_PORT=-Dserver.port=8771
+     - PROFILE=--spring.cloud.config.profile=test
+
+  bhmall-mem-shop:
+    image: bhmall-mem-shop:0.0.1
+    restart: always
+    container_name: bhmall-mem-shop
+    network_mode: host
+    environment:
+     - SERVER_PORT=-Dserver.port=8777
+     - PROFILE=--spring.cloud.config.profile=test
+
+  bhmall-mem-user:
+    image: bhmall-mem-user:0.0.1
+    restart: always
+    container_name: bhmall-mem-user
+    network_mode: host
+    environment:
+     - SERVER_PORT=-Dserver.port=8773
+     - PROFILE=--spring.cloud.config.profile=test
+
+  bhmall-mem-upload:
+    image: bhmall-mem-upload:0.0.1
+    restart: always
+    container_name: bhmall-mem-upload
+    network_mode: host
+    environment:
+     - SERVER_PORT=-Dserver.port=8779
+     - PROFILE=--spring.cloud.config.profile=test
+
+  bhmall-mautho:
+    image: bhmall-mautho:0.0.1
+    restart: always
+    container_name: bhmall-mautho
+    network_mode: host
+    environment:
+     - SERVER_PORT=-Dserver.port=8781
+     - PROFILE=--spring.cloud.config.profile=test
