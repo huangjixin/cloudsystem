@@ -31,17 +31,21 @@
                 context.save();
                 
                 var array = [];
-                let object = {};
+                var object = {};
+                object.x=10;
+                object.y=100;
+                array.push(object);
+                object = {};
                 object.x=10;
                 object.y=10;
                 array.push(object);
                 object = {};
                 object.x=10;
-                object.y=100;
+                object.y=102;
                 array.push(object);
                 object = {};
                 object.x=300;
-                object.y=100;
+                object.y=102;
                 array.push(object);
                 object = {};
                 object.x=300;
@@ -51,12 +55,16 @@
                 object.x=600;
                 object.y=400;
                 array.push(object);
+                object = {};
+                object.x=600;
+                object.y=100;
+                array.push(object);
                 var item = array[0];
                 //array.push({x:0,y:0});
                // array.push({x:100,y:0});
                // array.push({x:100,y:500});
                // array.push({x:20,y:550});
-               context.beginPath();
+               
                drawAnimationLine(item.x,item.y,array,0);
             }
 
@@ -125,18 +133,19 @@
             	if(tempX == endX && tempY == endY ){
             		if(index+1 < array.length){
             			index++;
-            			setTimeout(drawAnimationLine, 1,endX,endY,array,index);
+            			setTimeout(drawAnimationLine, 10,endX,endY,array,index);
             		}else{
             			
             		}
             		
             	}else{
+            		context.beginPath();
             		context.moveTo(startX,startY);
                 	context.lineTo(tempX,tempY);
-                	context.lineWidth = 5;
+                	context.lineWidth = 2;
                     context.strokeStyle = "#AA394C";
                     context.stroke();
-                	setTimeout(drawAnimationLine, 1,tempX,tempY,array,index);
+                	setTimeout(drawAnimationLine, 10,tempX,tempY,array,index);
             	}
             	
             }

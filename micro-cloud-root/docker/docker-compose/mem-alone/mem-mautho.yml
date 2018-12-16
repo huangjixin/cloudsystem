@@ -1,0 +1,10 @@
+version: "2"
+services:
+  bhmall-mautho:
+    image: bhmall-mem-mautho:0.0.1
+    restart: always
+    container_name: bhmall-mem-mautho
+    network_mode: host
+    environment:
+     - SERVER_PORT=-Dserver.port=8781
+     - PROFILE=--spring.cloud.config.profile=test

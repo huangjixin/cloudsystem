@@ -19,6 +19,7 @@
 *.tar.gz
 *.rar
 *.class
+/bin
 /target
 /.settings
 .classpath

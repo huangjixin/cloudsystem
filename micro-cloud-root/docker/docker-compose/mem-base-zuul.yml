@@ -1,0 +1,10 @@
+version: "2"
+services:
+  bhmall-mem-zuul:
+    image: bhmall-mem-zuul:0.0.1
+    restart: always
+    container_name: bhmall-mem-zuul
+    network_mode: host
+    environment:
+     - SERVER_PORT=-Dserver.port=8760
+     - PROFILE=--spring.cloud.config.profile=test

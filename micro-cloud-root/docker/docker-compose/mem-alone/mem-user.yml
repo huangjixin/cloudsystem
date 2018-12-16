@@ -1,0 +1,10 @@
+version: "2"
+services:
+  bhmall-mem-user:
+    image: bhmall-mem-user:0.0.1
+    restart: always
+    container_name: bhmall-mem-user
+    network_mode: host
+    environment:
+     - SERVER_PORT=-Dserver.port=8773
+     - PROFILE=--spring.cloud.config.profile=test

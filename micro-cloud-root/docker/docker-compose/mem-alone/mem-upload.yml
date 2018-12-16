@@ -1,0 +1,10 @@
+version: "2"
+services:
+  bhmall-mem-upload:
+    image: bhmall-mem-upload:0.0.1
+    restart: always
+    container_name: bhmall-mem-upload
+    network_mode: host
+    environment:
+     - SERVER_PORT=-Dserver.port=8779
+     - PROFILE=--spring.cloud.config.profile=test
