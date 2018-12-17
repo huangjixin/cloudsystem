@@ -7,12 +7,12 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
+//import org.springframework.data.redis.connection.RedisConnectionFactory;
+//import org.springframework.data.redis.core.RedisTemplate;
 //import org.springframework.data.redis.listener.PatternTopic;
 //import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 //import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+//import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -23,9 +23,9 @@ import com.zhiyesoft.cloud.utils.RedisUtil;
 //@EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
 
-	private RedisTemplate<String, Object> redisTemplate;
+//	private RedisTemplate<String, Object> redisTemplate;
 
-	@Bean(name = "redisTemplate")
+	/*@Bean(name = "redisTemplate")
 	public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
 		RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
 		redisTemplate.setConnectionFactory(redisConnectionFactory);
@@ -63,7 +63,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 		RedisUtil redisUtil = new RedisUtil();
 		redisUtil.setRedisTemplate(this.redisTemplate);
 		return redisUtil;
-	}
+	}*/
 
 	/**
 	 * redis 订阅频道

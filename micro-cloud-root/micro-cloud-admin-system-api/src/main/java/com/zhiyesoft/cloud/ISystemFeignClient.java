@@ -2,8 +2,12 @@ package com.zhiyesoft.cloud;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.zhiyesoft.cloud.basic.core.vo.Response;
+import com.zhiyesoft.cloud.modules.system.domain.User;
 
 import feign.hystrix.FallbackFactory;
 
@@ -17,6 +21,8 @@ public interface ISystemFeignClient {
 	@RequestMapping(name="test",method=RequestMethod.GET)
 	public String test();
 	
+	@RequestMapping(name="save",method=RequestMethod.POST)
+	public Response save(@ModelAttribute User record);
 }
 
 @Component
@@ -28,6 +34,13 @@ class SystemFeignClientFallbackFactory implements FallbackFactory<ISystemFeignCl
 			@Override
 			public String test() {
 				return "test方法调用出错，回滚方法被调用";
+			}
+
+			@Override
+			public Response save(User record) {
+				Response response = null;
+				response = new Response();
+				return response;
 			}
 		};
 	}

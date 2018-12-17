@@ -3,6 +3,8 @@ package com.zhiyesoft.cloud.modules.mem.web;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,10 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.zhiyesoft.cloud.ISystemFeignClient;
 import com.zhiyesoft.cloud.basic.core.vo.Response;
 import com.zhiyesoft.cloud.basic.core.web.BaseController;
 import com.zhiyesoft.cloud.modules.mem.domain.Member;
 import com.zhiyesoft.cloud.modules.mem.service.IMemberService;
+import com.zhiyesoft.cloud.modules.system.domain.User;
+import com.zhiyesoft.cloud.utils.UUIDUtil;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,7 +32,9 @@ import io.swagger.annotations.ApiOperation;
 @Controller
 @RequestMapping("member")
 public class MemberController extends BaseController {
-
+	@Autowired
+	private ISystemFeignClient systemFeignClient;
+	
 	@Autowired
 	private IMemberService memberService;
 
@@ -35,12 +42,21 @@ public class MemberController extends BaseController {
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	@ResponseBody
 	public Response save(@ModelAttribute Member record) {
+//		PasswordEncoder passEncoder = new BCryptPasswordEncoder();
+//		User user = new User();
+//		user.setId(UUIDUtil.generateID());
+//		user.setLoginName(UUIDUtil.generateID());
+//		user.setPassword(passEncoder.encode("123456"));
+//		systemFeignClient.save(user);
+		String testResult = this.systemFeignClient.test();
 		Response response = null;
 
 		record.setCreateTime(new Date());
 		record.setUpdateTime(new Date());
 		memberService.insert(record);
 		response = new Response();
+		
+		
 		return response;
 	}
 

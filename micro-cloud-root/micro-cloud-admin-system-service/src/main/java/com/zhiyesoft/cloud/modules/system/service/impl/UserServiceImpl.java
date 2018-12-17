@@ -80,7 +80,6 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
 	@Override
 	public int testInsert(User user) {
 		int result = this.insertSelective(user);
-		double s = 10/0;
 		return result;
 	}
 
