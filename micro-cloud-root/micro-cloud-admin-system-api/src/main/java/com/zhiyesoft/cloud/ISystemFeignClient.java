@@ -18,10 +18,10 @@ import feign.hystrix.FallbackFactory;
  */
 @FeignClient(name = "system-service", fallbackFactory = SystemFeignClientFallbackFactory.class)
 public interface ISystemFeignClient {
-	@RequestMapping(name="test",method=RequestMethod.GET)
+	@RequestMapping(name="user/test",method=RequestMethod.GET)
 	public String test();
 	
-	@RequestMapping(name="save",method=RequestMethod.POST)
+	@RequestMapping(name="user/save",method=RequestMethod.POST)
 	public Response save(@ModelAttribute User record);
 }
 
