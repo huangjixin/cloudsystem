@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,14 +42,16 @@ public class MemberController extends BaseController {
 	@ApiOperation(value = "保存对象", notes = "")
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	@ResponseBody
+	@Transactional(rollbackFor=Exception.class)
 	public Response save(@ModelAttribute Member record) {
-//		PasswordEncoder passEncoder = new BCryptPasswordEncoder();
-//		User user = new User();
-//		user.setId(UUIDUtil.generateID());
-//		user.setLoginName(UUIDUtil.generateID());
-//		user.setPassword(passEncoder.encode("123456"));
-//		systemFeignClient.save(user);
-		String testResult = this.systemFeignClient.test();
+		PasswordEncoder passEncoder = new BCryptPasswordEncoder();
+		User user = new User();
+		user.setId(UUIDUtil.generateID());
+		user.setLoginName(UUIDUtil.generateID());
+		user.setPassword(passEncoder.encode("123456"));
+		systemFeignClient.save(user);
+		Response respon = this.systemFeignClient.save(user);
+		double s = 10/0;
 		Response response = null;
 
 		record.setCreateTime(new Date());

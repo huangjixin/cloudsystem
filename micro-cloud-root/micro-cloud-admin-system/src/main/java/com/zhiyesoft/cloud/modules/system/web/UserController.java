@@ -15,6 +15,7 @@ import com.zhiyesoft.cloud.basic.core.vo.Response;
 import com.zhiyesoft.cloud.basic.core.web.BaseController;
 import com.zhiyesoft.cloud.modules.system.domain.User;
 import com.zhiyesoft.cloud.modules.system.service.IUserService;
+import com.zhiyesoft.cloud.utils.UUIDUtil;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -36,7 +37,7 @@ public class UserController extends BaseController {
     @ResponseBody
     public Response save(@ModelAttribute User record) {
         Response response = null;
-        
+        record.setId(UUIDUtil.generateID());
         record.setCreateTime(new Date());
         record.setUpdateTime(new Date());
         userService.insert(record);
