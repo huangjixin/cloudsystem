@@ -71,5 +71,17 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
 		
 		return userVo;
 	}
+	
+	@Override
+	public int insertSelective(User record) {
+		return super.insertSelective(record);
+	}
+
+	@Override
+	public int testInsert(User user) {
+		int result = this.insertSelective(user);
+		double s = 10/0;
+		return result;
+	}
 
 }

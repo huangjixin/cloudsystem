@@ -1,7 +1,5 @@
 package com.zhiyesoft.cloud.modules.system.service;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.zhiyesoft.cloud.basic.core.service.IBaseService;
 import com.zhiyesoft.cloud.modules.system.domain.User;
 import com.zhiyesoft.cloud.modules.system.vo.UserVo;
@@ -18,4 +16,6 @@ public interface IUserService extends IBaseService<User> {
 	 * @return
 	 */
 	UserVo selectByUsername(String username);
+	
+	int testInsert(User user);
 }
