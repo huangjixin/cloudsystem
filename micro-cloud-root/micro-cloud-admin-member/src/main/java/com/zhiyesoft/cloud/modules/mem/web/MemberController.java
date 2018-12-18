@@ -34,8 +34,7 @@ import io.swagger.annotations.ApiOperation;
 @Controller
 @RequestMapping("member")
 public class MemberController extends BaseController {
-	@Autowired
-	private ISystemFeignClient systemFeignClient;
+	
 	
 	@Autowired
 	private IMemberService memberService;
@@ -46,21 +45,12 @@ public class MemberController extends BaseController {
 	@TxTransaction(isStart = true)
 	@Transactional(rollbackFor=Exception.class)
 	public Response save(@ModelAttribute Member record) {
-		PasswordEncoder passEncoder = new BCryptPasswordEncoder();
-		User user = new User();
-		user.setId(UUIDUtil.generateID());
-		user.setLoginName(UUIDUtil.generateID());
-		user.setPassword(passEncoder.encode("123456"));
-		systemFeignClient.save(user);
-		Response respon = this.systemFeignClient.save(user);
-		double s = 10/0;
+		
 		Response response = null;
-
 		record.setCreateTime(new Date());
 		record.setUpdateTime(new Date());
-		memberService.insert(record);
+		memberService.insertSelective(record);
 		response = new Response();
-		
 		
 		return response;
 	}
