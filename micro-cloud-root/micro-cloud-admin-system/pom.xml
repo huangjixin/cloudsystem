@@ -22,7 +22,6 @@
 	</properties>
 
 	<dependencies>
-		
 		<dependency>
 			<groupId>com.zhiyesoft.cloud.system-service</groupId>
 			<artifactId>micro-cloud-admin-system-service</artifactId>

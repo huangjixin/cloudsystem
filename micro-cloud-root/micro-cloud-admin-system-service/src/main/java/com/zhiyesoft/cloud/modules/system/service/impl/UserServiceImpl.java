@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.codingapi.tx.annotation.ITxTransaction;
+//import com.codingapi.tx.annotation.ITxTransaction;
 import com.zhiyesoft.cloud.basic.core.mapper.BaseMapper;
 import com.zhiyesoft.cloud.basic.core.service.impl.BaseServiceImpl;
 import com.zhiyesoft.cloud.modules.system.domain.User;
@@ -23,7 +23,9 @@ import com.zhiyesoft.cloud.modules.system.vo.UserVo;
  */
 @Transactional(rollbackFor = Exception.class)
 @Service
-public class UserServiceImpl extends BaseServiceImpl<User> implements IUserService,ITxTransaction {
+public class UserServiceImpl extends BaseServiceImpl<User> implements IUserService
+//,ITxTransaction
+{
 
 	////////////////////////////////////////////////////////
 	///// 变量区域
