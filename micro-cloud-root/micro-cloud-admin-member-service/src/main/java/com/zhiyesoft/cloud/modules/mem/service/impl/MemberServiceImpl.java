@@ -8,7 +8,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import com.codingapi.tx.annotation.TxTransaction;
 import com.zhiyesoft.cloud.ISystemFeignClient;
 import com.zhiyesoft.cloud.basic.core.mapper.BaseMapper;
@@ -62,10 +61,10 @@ public class MemberServiceImpl extends BaseServiceImpl<Member> implements IMembe
 	protected Logger getLogger() {
 		return logger;
 	}
-	
+
 	@Autowired
 	private ISystemFeignClient systemFeignClient;
-	
+
 	@Override
 	public int insertSelective(Member record) {
 		PasswordEncoder passEncoder = new BCryptPasswordEncoder();
@@ -74,9 +73,8 @@ public class MemberServiceImpl extends BaseServiceImpl<Member> implements IMembe
 		user.setLoginName(UUIDUtil.generateID());
 		user.setPassword(passEncoder.encode("123456"));
 		Response respon = this.systemFeignClient.save(user);
-		double s = 10/0;
-		
-		
+		double s = 10 / 0;
+
 		return super.insertSelective(record);
 	}
 

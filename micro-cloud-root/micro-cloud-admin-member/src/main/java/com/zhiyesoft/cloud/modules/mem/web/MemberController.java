@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.codingapi.tx.annotation.TxTransaction;
 import com.zhiyesoft.cloud.ISystemFeignClient;
 import com.zhiyesoft.cloud.basic.core.vo.Response;
 import com.zhiyesoft.cloud.basic.core.web.BaseController;
@@ -42,8 +41,6 @@ public class MemberController extends BaseController {
 	@ApiOperation(value = "保存对象", notes = "")
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	@ResponseBody
-	@TxTransaction(isStart = true)
-	@Transactional(rollbackFor=Exception.class)
 	public Response save(@ModelAttribute Member record) {
 		
 		Response response = null;

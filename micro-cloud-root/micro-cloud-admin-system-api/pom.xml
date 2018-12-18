@@ -25,11 +25,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.codingapi</groupId>
-    		<artifactId>tx-client</artifactId>
-    		<version>4.2.0</version>
-		</dependency>
-		<dependency>
 			<groupId>com.zhiyesoft.cloud.core</groupId>
 			<artifactId>micro-cloud-core</artifactId>
 			<version>1.0</version>
