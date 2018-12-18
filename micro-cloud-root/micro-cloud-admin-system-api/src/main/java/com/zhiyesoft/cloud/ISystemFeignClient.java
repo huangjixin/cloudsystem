@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.codingapi.tx.annotation.ITxTransaction;
 import com.zhiyesoft.cloud.basic.core.vo.Response;
 import com.zhiyesoft.cloud.modules.system.domain.User;
 
@@ -26,7 +27,7 @@ public interface ISystemFeignClient {
 }
 
 @Component
-class SystemFeignClientFallbackFactory implements FallbackFactory<ISystemFeignClient>  {
+class SystemFeignClientFallbackFactory implements FallbackFactory<ISystemFeignClient>,ITxTransaction  {
 
 	@Override
 	public ISystemFeignClient create(Throwable cause) {
