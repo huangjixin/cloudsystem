@@ -89,6 +89,7 @@
 		<module>micro-cloud-admin-goods</module>
 		<module>micro-cloud-admin-goods-service</module>
 		<module>micro-cloud-admin-goods-vo</module>
+		<module>micro-cloud-admin-tx-manager</module>
 	</modules>
 
 </project>
