@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.codingapi.tx.annotation.TxTransaction;
 import com.zhiyesoft.cloud.basic.core.mapper.BaseMapper;
 import com.zhiyesoft.cloud.basic.core.service.impl.BaseServiceImpl;
 import com.zhiyesoft.cloud.modules.mem.domain.Member;
@@ -16,6 +17,7 @@ import com.zhiyesoft.cloud.modules.mem.service.IMemberService;
  * @author 黄记新
  *
  */
+@TxTransaction(isStart = true)
 @Transactional(rollbackFor = Exception.class)
 @Service
 public class MemberServiceImpl extends BaseServiceImpl<Member> implements IMemberService {
