@@ -1,0 +1,3 @@
+mvn install:install-file -Dfile=transaction-springcloud-4.2.0-SNAPSHOT.jar -DgroupId=com.codingapi -DartifactId=transaction-springcloud -Dversion=4.2.0-SNAPSHOT -Dpackaging=jar
+mvn install:install-file -Dfile=tx-client-4.2.0-SNAPSHOT.jar -DgroupId=com.codingapi -DartifactId=tx-client -Dversion=4.2.0-SNAPSHOT -Dpackaging=jar
+mvn install:install-file -Dfile=tx-plugins-db-4.2.0-SNAPSHOT.jar -DgroupId=com.codingapi -DartifactId=tx-plugins-db -Dversion=4.2.0-SNAPSHOT -Dpackaging=jar
