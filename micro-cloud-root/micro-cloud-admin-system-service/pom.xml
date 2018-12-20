@@ -24,7 +24,7 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
+		<!-- <dependency>
 		    <groupId>com.github.1991wangliang</groupId>
 		    <artifactId>lorne_core</artifactId>
 		    <version>1.0.0</version>
@@ -34,14 +34,14 @@
 			<artifactId>transaction-springcloud</artifactId>
 			<version>4.2.0-SNAPSHOT</version>
 			<exclusions>
-				<!-- <exclusion>
+				<exclusion>
 					<groupId>org.slf4j</groupId>
 					<artifactId>*</artifactId>
 				</exclusion>
 				<exclusion>
                     <groupId>ch.qos.logback</groupId>
                    <artifactId>logback-classic</artifactId>
-                </exclusion> -->
+                </exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -49,14 +49,14 @@
 			<artifactId>tx-plugins-db</artifactId>
 			<version>4.2.0-SNAPSHOT</version>
 			<exclusions>
-				<!-- <exclusion>
+				<exclusion>
 					<groupId>org.slf4j</groupId>
 					<artifactId>*</artifactId>
 				</exclusion>
 				<exclusion>
                     <groupId>ch.qos.logback</groupId>
                    <artifactId>logback-classic</artifactId>
-                </exclusion> -->
+                </exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -64,16 +64,16 @@
 			<artifactId>tx-client</artifactId>
 			<version>4.2.0-SNAPSHOT</version>
 			<exclusions>
-				<!-- <exclusion>
+				<exclusion>
 					<groupId>org.slf4j</groupId>
 					<artifactId>*</artifactId>
 				</exclusion>
 				<exclusion>
                     <groupId>ch.qos.logback</groupId>
                    <artifactId>logback-classic</artifactId>
-                </exclusion> -->
+                </exclusion>
 			</exclusions>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>com.zhiyesoft.cloud.core</groupId>
 			<artifactId>micro-cloud-core</artifactId>
