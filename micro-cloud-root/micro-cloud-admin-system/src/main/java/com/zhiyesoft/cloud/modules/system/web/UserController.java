@@ -40,7 +40,7 @@ public class UserController extends BaseController {
         record.setId(UUIDUtil.generateID());
         record.setCreateTime(new Date());
         record.setUpdateTime(new Date());
-        userService.insert(record);
+        userService.insertSelective(record);
         response = new Response();
         return response;
     }
