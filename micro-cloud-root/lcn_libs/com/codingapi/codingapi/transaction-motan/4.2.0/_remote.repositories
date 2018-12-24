@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Dec 24 15:10:02 CST 2018
+transaction-motan-4.2.0.pom>=
+transaction-motan-4.2.0-javadoc.jar>=
+transaction-motan-4.2.0.jar>=
+transaction-motan-4.2.0-sources.jar>=

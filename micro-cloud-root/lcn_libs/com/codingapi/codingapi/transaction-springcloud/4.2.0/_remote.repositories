@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Dec 24 15:09:59 CST 2018
+transaction-springcloud-4.2.0-sources.jar>=
+transaction-springcloud-4.2.0.jar>=
+transaction-springcloud-4.2.0-javadoc.jar>=
+transaction-springcloud-4.2.0.pom>=

@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Dec 24 15:24:12 CST 2018
+tx-plugins-db-4.1.0.pom>nexus=
+tx-plugins-db-4.1.0.jar>nexus=
+tx-plugins-db-4.1.0-sources.jar>nexus=
