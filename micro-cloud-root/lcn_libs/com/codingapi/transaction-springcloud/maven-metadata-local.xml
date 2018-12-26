@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <groupId>com.codingapi</groupId>
-  <artifactId>tx-client</artifactId>
+  <artifactId>transaction-springcloud</artifactId>
   <versioning>
     <release>4.2.0</release>
     <versions>
       <version>4.2.0</version>
     </versions>
-    <lastUpdated>20181224084031</lastUpdated>
+    <lastUpdated>20181226064154</lastUpdated>
   </versioning>
 </metadata>
