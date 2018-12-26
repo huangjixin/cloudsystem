@@ -1,0 +1,5 @@
+安装分布式jar的命令 
+mvn install:install-file  -Dfile=transaction-springcloud-4.2.0.jar  -DgroupId=com.codingapi  -DartifactId=transaction-springcloud -Dversion=4.2.0 -Dpackaging=jar
+mvn install:install-file  -Dfile=tx-client-4.2.0.jar  -DgroupId=com.codingapi  -DartifactId=tx-client -Dversion=4.2.0 -Dpackaging=jar
+mvn install:install-file  -Dfile=transaction-dubbo-4.2.0.jar  -DgroupId=com.codingapi  -DartifactId=transaction-dubbo -Dversion=4.2.0 -Dpackaging=jar
+mvn install:install-file  -Dfile=transaction-motan-4.2.0.jar  -DgroupId=com.codingapi  -DartifactId=transaction-motan -Dversion=4.2.0 -Dpackaging=jar
