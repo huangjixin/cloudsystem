@@ -1,8 +1,8 @@
 version: "3" 
 services:
-  micro-cloud-admin-member:
-    image: micro-cloud-admin-member:0.0.1
-    # 去阿里云拉镜像 registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-member-0.0.1
+  micro-cloud-admin-tx-manager:
+    image: micro-cloud-admin-tx-manager:0.0.1
+    # 去阿里云拉镜像 registry.cn-shenzhen.aliyuncs.com/zhangzhicheng/zhangzhicheng:micro-cloud-admin-tx-manager-0.0.1
     #container_name: micro-cloud-admin-member
     deploy:
       replicas: 1
@@ -11,14 +11,13 @@ services:
     networks:
       cloudsystem-overlay:
         aliases:
-          - member-service
+          - admintx
     ports:
-     - 8773:8773
+     - 8899:8899
     environment:
      - PROFILE=dev
      - HOST=adminserver
      - CONFIG=adminconfig
-     - TXHOST=admintx
  
 networks:
   cloudsystem-overlay:
