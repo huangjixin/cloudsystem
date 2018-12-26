@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.codingapi.tx.annotation.TxTransaction;
 import com.zhiyesoft.cloud.basic.core.mapper.BaseMapper;
 import com.zhiyesoft.cloud.basic.core.service.impl.BaseServiceImpl;
 import com.zhiyesoft.cloud.modules.system.domain.User;
@@ -75,7 +76,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
 		return userVo;
 	}
 	
-//	@TxTransaction
+	@TxTransaction
 	@Override
 	public int insertSelective(User record) {
 		return super.insertSelective(record);
