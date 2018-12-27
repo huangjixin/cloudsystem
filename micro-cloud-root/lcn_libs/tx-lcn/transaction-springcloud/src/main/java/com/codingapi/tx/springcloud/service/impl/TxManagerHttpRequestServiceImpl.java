@@ -4,8 +4,12 @@ import com.codingapi.tx.netty.service.TxManagerHttpRequestService;
 import com.lorne.core.framework.utils.http.HttpUtils;
 import org.springframework.stereotype.Service;
 
+/**
+ * create by lorne on 2017/11/18
+ */
+
 @Service
-public class TxManagerHttpRequestServiceImpl implements TxManagerHttpRequestService {
+public class TxManagerHttpRequestServiceImpl implements TxManagerHttpRequestService{
 
     @Override
     public String httpGet(String url) {
