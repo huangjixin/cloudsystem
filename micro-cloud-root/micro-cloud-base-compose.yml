@@ -36,6 +36,7 @@ services:
     environment:
      - PROFILE=dev
      - HOST=adminserver
+     - TXHOST=admintx
     
   micro-cloud-admin-zuul:
     image: micro-cloud-admin-zuul:0.0.1

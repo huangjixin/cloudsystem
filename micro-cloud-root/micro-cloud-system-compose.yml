@@ -18,7 +18,6 @@ services:
      - PROFILE=dev
      - HOST=adminserver
      - CONFIG=adminconfig
-     - TXHOST=admintx
 networks:
   cloudsystem-overlay:
     external:
