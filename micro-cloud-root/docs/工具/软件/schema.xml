@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://io.mycat/">
+
+	<schema name="cloudsystem" checkSQLschema="true" sqlMaxLimit="100">
+		<table name="art_article" primaryKey="ID" dataNode="dn1" />
+		<table name="art_article_sku" primaryKey="ID" dataNode="dn1" />
+		<table name="art_article_sku_attament" primaryKey="ID" dataNode="dn1" />
+		<table name="art_article_sku_reject_log" primaryKey="ID" dataNode="dn1" />
+		<table name="art_category" primaryKey="ID" dataNode="dn1" />
+		<table name="art_damage" primaryKey="ID" dataNode="dn1" />
+        <table name="art_damage_attament" primaryKey="ID" dataNode="dn1" />
+		<table name="cms_advertisement" primaryKey="ID" dataNode="dn1" />
+		<table name="cms_article" primaryKey="ID" dataNode="dn1" />
+		<table name="cms_article_info" primaryKey="ID" dataNode="dn1" />
+		<table name="cms_article_like" primaryKey="ID" dataNode="dn1" />
+		<table name="cms_attament" primaryKey="ID" dataNode="dn1" />
+		<table name="cms_category" primaryKey="ID" dataNode="dn1" />
+		<table name="gue_category" primaryKey="ID" dataNode="dn1" />
+		<table name="gue_member_option" primaryKey="ID" dataNode="dn1" />
+		<table name="gue_option" primaryKey="ID" dataNode="dn1" />
+		<table name="gue_question" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_account" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_account_log" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_address" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_attament" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_check" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_check_config" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_coupon" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_coupon_member" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_dept" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_exception_job" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_flow" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_goods_member" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_job" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_job_record" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_job_step" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_member" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_member_article" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_member_role" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_point" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_point_log" primaryKey="ID" dataNode="dn1" />
+		<table name="mem_role" primaryKey="ID" dataNode="dn1" />
+		<table name="pro_attament" primaryKey="ID" dataNode="dn1" />
+		<table name="pro_category" primaryKey="ID" dataNode="dn1" />
+		<table name="pro_goods" primaryKey="ID" dataNode="dn1" />
+		<table name="pro_goods_info" primaryKey="ID" dataNode="dn1" />
+		<table name="pro_goods_property" primaryKey="ID" dataNode="dn1" />
+		<table name="pro_goods_sku" primaryKey="ID" dataNode="dn1" />
+		<table name="pro_order" primaryKey="ID" dataNode="dn1" />
+		<table name="pro_order_refund" primaryKey="ID" dataNode="dn1" />
+		<table name="pro_property" primaryKey="ID" dataNode="dn1" />
+		<table name="pro_shop" primaryKey="ID" dataNode="dn1" />
+		<table name="system_attament" primaryKey="ID" dataNode="dn1" />
+		<table name="system_dept" primaryKey="ID" dataNode="dn1" />
+		<table name="system_log" primaryKey="ID" dataNode="dn1" />
+		<table name="system_resource" primaryKey="ID" dataNode="dn1" />
+		<table name="system_role" primaryKey="ID" dataNode="dn1" />
+		<table name="system_role_resource" primaryKey="ID" dataNode="dn1" />
+		<table name="system_user" primaryKey="ID" dataNode="dn1" />
+		<table name="system_user_role" primaryKey="ID" dataNode="dn1" />
+	</schema>
+	<dataNode name="dn1" dataHost="localhost1" database="cloudsystem" />
+	<dataHost name="localhost1" maxCon="1000" minCon="10" balance="1"
+			  writeType="0" dbType="mysql" dbDriver="native" switchType="3"  slaveThreshold="100">
+		<heartbeat>show status like 'wsrep%'</heartbeat>
+		
+		<writeHost host="hostM1" url="172.16.0.14:3307" user="root"
+				   password="654321" />
+		<writeHost host="hostM2" url="172.16.0.14:3308" user="root"
+				   password="654321" />
+		
+	</dataHost>
+</mycat:schema>
