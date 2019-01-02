@@ -1,0 +1,1 @@
+当Percona 集群重启之后，需要修改master的mysql下的批处理命令文件grastate.dat，把safe_to_bootstrap从0改成1，否则会报错。
