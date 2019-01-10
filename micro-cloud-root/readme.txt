@@ -173,6 +173,13 @@ echo '移除含有名字含有none字符串的镜像结束'
 #echo '移除含有名字含有micro-cloud字符串的容器结束'
 
 echo '创建overlay网络开始'
+
+#overlaynetwork=$(sudo docker network ls | grep cloudsystem-overlay | awk '{print $1}')
+#if [ "$overlaynetwork" == "" ]; then
+#	docker network create -d overlay --subnet=10.10.0.0/16 --gateway=10.10.0.254 --attachable=true cloudsystem-overlay &
+# 	sleep 10s
+#fi
+
 docker network create -d overlay --subnet=10.10.0.0/16 --gateway=10.10.0.254 --attachable=true cloudsystem-overlay &
 sleep 10s
 echo '创建overlay网络结束'
