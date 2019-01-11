@@ -1,0 +1,4 @@
+sudo docker run --restart=always --name rancher -d -p 8888:8080 rancher/server:stable
+
+---- 创建haproxy的docke swarm命令
+docker service create --name=haproxy -p 7066:7066 -p 1081:1081 --replicas 2 --mount type=bind,src=/u06/user/pkg/haproxy/haproxy.cfg,dst=/usr/local/etc/haproxy/haproxy.cfg haproxy
