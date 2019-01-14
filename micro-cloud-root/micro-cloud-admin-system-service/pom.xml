@@ -54,22 +54,12 @@
 			<artifactId>micro-cloud-core</artifactId>
 			<version>1.0</version>
 		</dependency>
-		<!-- 缓存开始 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
 		</dependency>
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-cache</artifactId>
-		</dependency>
-		
-		<dependency>
-		    <groupId>net.sf.ehcache</groupId>
-		    <artifactId>ehcache</artifactId>
-		</dependency>
-		<!-- 缓存结束 -->
-		
 		<dependency>
 			<groupId>com.zhiyesoft.cloud.system-vo</groupId>
 			<artifactId>micro-cloud-admin-system-vo</artifactId>
