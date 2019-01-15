@@ -1,0 +1,8 @@
+1.使用spring-loaded实现应用热部署
+在pom.xml文件当中加入
+<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>springloaded</artifactId>
+		    <version>1.2.8.RELEASE</version>
+		</dependency>
+右键项目->Run as->Run configurations... 在tomcat启动项添加VM参数-javaagent:C:/springloaded-1.2.5.RELEASE.jar -noverify
