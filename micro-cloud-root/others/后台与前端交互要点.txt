@@ -1,0 +1,309 @@
+1.数组接收使用@RequestBody标签，其它参数可以使用@RequestParam的注解；前端须对使用@RequestParam的注解的参数进行URL拼接，使用JSON.Stringfy(参数数组)进行传参。示例代码：
+@ApiOperation(value = "投票", notes = "")
+	@PostMapping(value = "insert")
+	@ResponseBody
+	public Response insert(@RequestBody List<Vote> votes, @RequestParam(value = "userId") Integer userId,
+			@RequestParam(value = "topicId") Integer topicId) {
+		Response resp = new Response();
+		boolean isVoted = userService.checkVote(topicId, userId);
+
+		if (isVoted) {
+			resp.setCode("400");
+			resp.setMessage("本次投票只允许投一次");
+			return resp;
+		}
+
+		int res = this.voteService.insert(votes);
+		if (res > 0) {
+			UserTopic userTopic = new UserTopic();
+			userTopic.setTopicId(topicId);
+			userTopic.setUserId(userId);
+			userTopicService.insert(userTopic);
+			
+			User user = this.userService.selectByPrimaryKey(userId);
+			user.setIsVoteed(1);
+			this.userService.updateByPrimaryKey(user);
+		}
+		return resp;
+	}
+	
+	前端代码：
+	voteFetch = (option) => {
+
+        let url = baseUrl + '/vote/insert?userId=' + user.id + '&topicId=' + 2;
+        let optionStr = JSON.stringify(option);
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                "mode": "cors"
+            },
+            body: optionStr,
+            credentials: 'include',
+            xhrFields: { withCredentials: true },
+            crossDomain: true
+        }).then((res) => {
+            if (typeof res == 'undefined' || res == null) {
+                return null;
+            } else {
+                return res.json();
+            }
+        }).then((data) => {
+            if (typeof data == 'undefined' || data == null) {
+                alert('提交失败');
+                return;
+            }
+            if (data.code == 200) {
+                let path = {
+                    pathname: '/voted'
+                }
+                this.props.history.push(path);
+            } else {
+                alert(data.message);
+            }
+            this.state.isClicked = false;
+        }).catch(e => {
+            this.state.isClicked = false;
+            alert(e);
+        });
+    }
+    
+    
+2.绑定单体对象
+	
+	@ApiOperation(value = "测试对象", notes = "")
+	@PostMapping(value = "testObject")
+	@ResponseBody
+	public Response testObject(User user) {
+		Response response = new Response();
+		response.setData(user);
+		return response;
+	}
+	
+fetchRequest = () => {
+    let url = 'http://192.168.9.120:8000/test/testObject';
+
+    let formData = new FormData();
+    formData.append('username', 5465);
+
+    fetch(url, {
+      method: 'POST',
+      'Content-Type': 'application/form-data',
+      body: formData
+    }).then((response) => {
+      return response.json();
+    }).then((data) => {
+      console.log(data);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+  
+ 3.绑定数组
+ 	
+	@ApiOperation(value = "测试对象数组", notes = "")
+	@PostMapping(value = "testObjectArray")
+	@ResponseBody
+	public Response testObjectArray(@RequestBody List<User> users) {
+		Response response = new Response();
+		response.setData(users);
+		return response;
+	}
+	
+	fetchRequest = () => {
+    let url = 'http://192.168.9.120:8000/test/testObjectArray';
+
+    let objArray = [];
+    objArray[0] = {
+      'name': '1243'
+    };
+    objArray[1] = {
+      'name': 'sdf'
+    };
+    let users = JSON.stringify(objArray);
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: users
+    }).then((response) => {
+      return response.json();
+    }).then((data) => {
+      console.log(data);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+	
+4.单文件上传。
+		@ApiOperation(value = "测试单文件上传", notes = "")
+	@PostMapping(value = "testFile")
+	@ResponseBody
+	public Response testFile(@RequestParam("file") MultipartFile file,HttpServletRequest request) {
+		Response response = new Response();
+		String contentType = file.getContentType();
+        String fileName = file.getOriginalFilename();
+        String filePath = request.getSession().getServletContext().getRealPath("imgupload");
+        File targetFile = new File(filePath);  
+       
+        if(!targetFile.exists()){    
+            targetFile.mkdirs();    
+        }       
+        targetFile = new File(filePath+File.separator+fileName);
+        try {
+			file.transferTo(targetFile);
+		} catch (IllegalStateException e) {
+			response.setMessage("文件上传失败");
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+       
+		return response;
+	}
+	
+5.多文件多线程上传
+@ApiOperation(value = "涓婁紶鏂囦欢", notes = "")
+	@RequestMapping(value = "fileUpload", method = RequestMethod.POST)
+	@ResponseBody
+	public Response upload(@RequestParam("files") MultipartFile[] files) {
+		Response response = new Response();
+		List<String> urls = new CopyOnWriteArrayList<String>();
+
+		int length = files.length;
+		if (length > 0) {
+			ExecutorService es = Executors.newFixedThreadPool(3);
+
+			for (int item = 0; item < length; item++) {
+				if (!files[item].isEmpty()) {
+					UploadThread uploadThread = new UploadThread(files[item]);
+					Future<String> future = es.submit(uploadThread);
+					try {
+						urls.add(future.get());
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (ExecutionException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+		response.setData(urls);
+		return response;
+	}
+	
+class UploadThread implements Callable<String> {
+
+		MultipartFile file;
+
+		public UploadThread(MultipartFile file) {
+			super();
+			this.file = file;
+		}
+
+		@Override
+		public String call() throws Exception {
+			// TODO Auto-generated method stub
+			OSSClient ossClient = getOSSClient();
+			try {
+				logger.info("---寮�濮嬩笂浼�---");
+				String fileName = file.getOriginalFilename();
+				String realyName = getRealyName(fileName);
+				InputStream uploadFile = file.getInputStream();
+				ossClient.putObject(BUCKET_NAME, FOLDER + realyName, uploadFile);
+				String url = getUrl(realyName);
+
+				// 鎻掑叆鍥剧墖淇℃伅鍒拌〃bhm_attament
+				Attament attament = new Attament();
+				attament.setId(UUIDUtil.generateID());
+				attament.setName(realyName);
+				attament.setUrl(url);
+				attament.setCreateTime(new Date());
+				attament.setEditTime(new Date());
+				int num = attamentService.insert(attament);
+				logger.info("insert鎻掑叆鏉℃暟锛�" + num);
+				closeOSSClient(ossClient);
+				return url;
+			} catch (OSSException oe) {
+				logger.info("---鏈嶅姟鍣ㄩ敊璇�---");
+				logger.info("Error Message:" + oe.getErrorMessage());
+				logger.info("Error Code:" + oe.getErrorCode());
+				logger.info("Request ID:" + oe.getRequestId());
+				logger.info("Host ID:" + oe.getHostId());
+				closeOSSClient(ossClient);
+			} catch (ClientException ce) {
+				logger.info("---瀹㈡埛绔笂浼犻敊璇�---");
+				logger.info("Error Message:" + ce.getMessage());
+				closeOSSClient(ossClient);
+			} catch (IOException e) {
+				logger.info("---鑾峰彇鏂囦欢閿欒---");
+				e.printStackTrace();
+				closeOSSClient(ossClient);
+			}
+			closeOSSClient(ossClient);
+			return null;
+		}
+	}
+	
+编辑器使用tinymce
+
+tinymce.PluginManager.add('batchUploadImage', function(editor) {
+ function selectLocalImages() {
+  var dom = editor.dom;
+  //console.log(editor)
+  var file_upload_url = "/upload-service/admin/upload/fileUpload"; //文件上传接口地址
+  var input_f = document.createElement('input'); //创建节点
+  input_f.setAttribute('type', 'file');
+  input_f.setAttribute('accept', 'image/jpg,image/jpeg,image/png,image/gif');
+  input_f.setAttribute('multiple', 'multiple'); //设置多图上传属性
+
+  input_f.onchange = function(e) {
+   console.log(this.files) 
+   var _file = this.files;        
+   var formData = new FormData();  
+   for(let x of _file) {
+    //console.log(x)
+    if((+x.size) > 2 * 1024 * 1024) return alert('图片不能超过2M');
+    formData.append("files", x);
+   }      
+   const xhr = new XMLHttpRequest();
+   xhr.open('POST', file_upload_url);
+   xhr.onload = function() {
+    //console.log(xhr)
+    if(xhr.status == 200) {
+     const res_imgs = (JSON.parse(xhr.responseText)).data;
+     res_imgs.forEach((img, index) => {
+      editor.selection.setContent(dom.createHTML('img', {
+       src: img
+      }));
+     });
+    } else {
+     //alert('上传失败');
+     editor.windowManager.alert('上传失败');
+    }
+   }
+   xhr.send(formData)
+  };
+  input_f.click();
+ }
+
+ editor.addCommand("mceUploadImageEditor", selectLocalImages);
+
+ editor.addButton('batchUploadImage', {
+  icon: 'image',
+  tooltip: '批量上传图片',
+  onclick: selectLocalImages
+ });
+
+ editor.addMenuItem('batchUploadImage', {
+  icon: 'image',
+  text: '批量上传图片',
+  context: 'tools',
+  onclick: selectLocalImages
+ });
+});
