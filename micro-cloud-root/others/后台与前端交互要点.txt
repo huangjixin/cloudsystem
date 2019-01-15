@@ -165,7 +165,36 @@ fetchRequest = () => {
 	}
 	
 5.多文件多线程上传
-@ApiOperation(value = "涓婁紶鏂囦欢", notes = "")
+fetchRequest = () => {
+    let url = 'http://192.168.9.120:8000/test/testMultiFiles';
+
+    let formData = new FormData();
+    let images = this.state.images;
+    console.log(images);
+    for (let i = 0; i < images.length; i++) {
+      let image = images[i];
+      //type可以写成：type: 'multipart/form-data'
+      let file = { uri: image.path, type: 'image/jpeg', name: 'img' + i + '.jpg' };
+      console.log(file);
+      formData.append("files", file);
+    }
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'multipart/form-data;charset=utf-8',
+      },
+      body: formData
+    }).then((response) => {
+      return response.json();
+    }).then((data) => {
+      console.log(data);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+  
+	@ApiOperation(value = "涓婁紶鏂囦欢", notes = "")
 	@RequestMapping(value = "fileUpload", method = RequestMethod.POST)
 	@ResponseBody
 	public Response upload(@RequestParam("files") MultipartFile[] files) {
