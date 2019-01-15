@@ -2,3 +2,8 @@ sudo docker run --restart=always --name rancher -d -p 8888:8080 rancher/server:s
 
 ---- 创建haproxy的docke swarm命令
 docker service create --name=haproxy -p 7066:7066 -p 1081:1081 --replicas 2 --mount type=bind,src=/u06/user/pkg/haproxy/haproxy.cfg,dst=/usr/local/etc/haproxy/haproxy.cfg haproxy
+
+---- 创建Redis负载均衡的swarm命令
+docker service create --replicas 2 --name redis -p 6379:6379 --update-delay 10s redis
+
+
