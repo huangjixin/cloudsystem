@@ -4,12 +4,13 @@ import java.net.URL;
 import java.sql.SQLException;
 
 import org.mybatis.generator.api.ShellRunner;
+import org.mybatis.generator.exception.InvalidConfigurationException;
 import org.mybatis.generator.exception.XMLParserException;
 
 
 public class Generator {
 
-	public static void main(String[] args) throws IOException, XMLParserException, SQLException, InterruptedException {
+	public static void main(String[] args) throws IOException, XMLParserException, SQLException, InterruptedException, InvalidConfigurationException {
 		/*List<String> warnings = new ArrayList<String>();
 		boolean overwrite = true;
 		InputStream inputStream = Generator.class.getResourceAsStream("/generatorConfig.xml");
