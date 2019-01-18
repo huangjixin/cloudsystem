@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
+import org.springframework.cache.Cache.ValueWrapper;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.support.CompositeCacheManager;
 import org.springframework.context.annotation.Lazy;
@@ -102,6 +103,48 @@ public class GoodsController extends BaseController {
 			response.setMessage("删除成功");
 		}
 
+		return response;
+	}
+	
+
+	@ApiOperation(value = "设置缓存", notes = "")
+	@GetMapping(value = "setCache")
+	@ResponseBody
+	public Response setCache(@RequestParam(name = "key", required = true) String key,@RequestParam(name = "value", required = true) String value) {
+		Response response;
+		response = new Response();
+		if (cacheManger != null) {
+			Cache cache = null;
+			try {
+				cache = cacheManger.getCache("Goods");
+			} catch (Exception e) {
+				
+			}
+			if(cache != null)
+				cache.put(key, value);
+		}
+
+		return response;
+	}
+	
+	@ApiOperation(value = "取缓存", notes = "")
+	@GetMapping(value = "getCache")
+	@ResponseBody
+	public Response getCache(@RequestParam(name = "key", required = true) String key) {
+		Response response;
+		response = new Response();
+		ValueWrapper obj = null ;
+		if (cacheManger != null) {
+			Cache cache = null;
+			try {
+				cache = cacheManger.getCache("Goods");
+			} catch (Exception e) {
+				
+			}
+			if(cache != null)
+				obj = cache.get(key);
+		}
+		response.setData(obj.get()!=null?obj.get():null);
 		return response;
 	}
 }

@@ -77,9 +77,10 @@ public class CompositeCacheConfig {
 		cacheManager.setFallbackToNoOpCache(false);
 
 		List<CacheManager> cacheManagers = Lists.newArrayList();
+		cacheManagers.add(redisCacheManager);
 		cacheManagers.add(simpleCacheManager);// 顺序决定默认管理器
 		cacheManagers.add(ehcacheCacheManager);
-		cacheManagers.add(redisCacheManager);
+		
 
 		cacheManager.setCacheManagers(cacheManagers);
 		return cacheManager;
