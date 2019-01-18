@@ -12,33 +12,33 @@ import org.springframework.cache.support.CompositeCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//@Configuration
+@Configuration
 public class CompositeCachingConfigurer 
-//implements CachingConfigurer 
+implements CachingConfigurer 
 {
 
-//	@Autowired(required = false)
-//	private CompositeCacheManager cacheManager;
-//
-//	@Override
-//	public CacheManager cacheManager() {
-//		return cacheManager;
-//	}
-//
-//	@Bean
-//	@Override
-//	public CacheResolver cacheResolver() {
-//		return new SimpleCacheResolver(cacheManager);
-//	}
-//
-//	@Override
-//	public KeyGenerator keyGenerator() {
-//		return new SimpleKeyGenerator();
-//	}
-//
-//	@Override
-//	public CacheErrorHandler errorHandler() {
-//		return null;
-//	}
+	@Autowired(required = false)
+	private CompositeCacheManager cacheManager;
+
+	@Override
+	public CacheManager cacheManager() {
+		return cacheManager;
+	}
+
+	@Bean
+	@Override
+	public CacheResolver cacheResolver() {
+		return new SimpleCacheResolver(cacheManager);
+	}
+
+	@Override
+	public KeyGenerator keyGenerator() {
+		return new SimpleKeyGenerator();
+	}
+
+	@Override
+	public CacheErrorHandler errorHandler() {
+		return null;
+	}
 
 }

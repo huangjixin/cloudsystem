@@ -2,6 +2,8 @@ package com.zhiyesoft.cloud.modules.goods.web;
 
 import java.util.Date;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
@@ -34,6 +36,9 @@ public class GoodsController extends BaseController {
 	@Autowired
 	@Lazy(value=true)
 	CompositeCacheManager cacheManger;
+	@Resource(name="ehcacheCacheManager")
+	@Lazy(value=true)
+	CacheManager cacheManger1;
 
 	@Autowired
 	private IGoodsService goodsService;
