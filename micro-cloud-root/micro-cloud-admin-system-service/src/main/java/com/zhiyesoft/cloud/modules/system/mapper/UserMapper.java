@@ -14,4 +14,11 @@ public interface UserMapper extends BaseMapper<User> {
 	 * @return
 	 */
 	UserVo selectByUsername(@Param(value = "username") String username);
+	/**
+	 * 根据用户名去查询带有角色与权限的对象。
+	 * 
+	 * @param username
+	 * @return
+	 */
+	UserVo findByName(@Param(value = "username") String username);
 }
