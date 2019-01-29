@@ -53,28 +53,46 @@
         
         
 		<javaModelGenerator
-			targetPackage="com.zhiyesoft.cloud.modules.system.domain"
+			targetPackage="com.zhiyesoft.vote.modules.topic.domain"
 			targetProject="src\main\java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
 		<sqlMapGenerator
-			targetPackage="com.zhiyesoft.cloud.modules.system.mapper"
+			targetPackage="com.zhiyesoft.vote.modules.topic.mapper"
 			targetProject="src\main\resources">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
 		<javaClientGenerator
-			targetPackage="com.zhiyesoft.cloud.modules.system.mapper"
+			targetPackage="com.zhiyesoft.vote.modules.topic.mapper"
 			targetProject="src\main\java" type="XMLMAPPER">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
- <!-- -->
-		<table tableName="system_%"  enableCountByExample="false" enableUpdateByExample="false"
+		<!-- <table tableName="user"  enableCountByExample="false" enableUpdateByExample="false"
             enableDeleteByExample="false" enableSelectByExample="false">
 		</table>
+		<table tableName="topic"  enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false">
+		</table>
+		<table tableName="question"  enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false">
+		</table>
+		<table tableName="option"  enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false">
+		</table> -->
+		<table tableName="vote"  enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false">
+		</table>
+		<table tableName="customer"  enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false">
+		</table>
+ <!--<table tableName="system_%"  enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false">
+		</table> -->
+		
 		<!-- <table tableName="system_user_role" domainObjectName="UserRole">
 		</table>
 		<table tableName="system_role" domainObjectName="Role">
