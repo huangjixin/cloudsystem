@@ -32,3 +32,28 @@ Token实例
     "scope": "service",
     "jti": "0020f719-ac20-4d10-b962-1adb2c3868dd"
 }
+
+SecurityContext securityContext = SecurityContextHolder.getContext();
+    return securityContext.getAuthentication().getName();
+    
+  注解@PreAuthorize("hasAuthority('SYS_ADMIN')")
+
+@RestController
+@RequestMapping("test")
+public class TestController {
+	/**
+	 * 测试方法
+	 * @return
+	 */
+	@GetMapping("hello")
+	@PreAuthorize("hasAuthority('*') or hasAuthority('test:hello')")
+	public String hello() {
+		return "hello,test";
+	}
+}
+
+通过PostMan进行访问：
+http://127.0.0.1:8928/mes/test/hello
+header：
+key:Authorization
+Value:Bearer Token
