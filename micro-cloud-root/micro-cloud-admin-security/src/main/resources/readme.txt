@@ -57,3 +57,11 @@ http://127.0.0.1:8928/mes/test/hello
 header：
 key:Authorization
 Value:Bearer Token
+
+
+// 请求过滤 对api/对所有接口都验证
+        http
+                .authorizeRequests()
+                    .antMatchers("/api/**").access("@permissionChecker.hasPermission(authentication,request)")
+                .anyRequest().authenticated();
+ 
